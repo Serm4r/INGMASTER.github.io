@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="../../CSS/repello.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Cantidad de Acero en Vigas y Columnas</title>
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="../index.html"><i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a></li>
+                    <li><a href="../Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+
+                </ul>
+            </li>
+            <li><a href="../SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a></li>
+           
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../video.html" target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../../JS/navmenu.js"></script>
+
+    <div class="AceroCantidad">
+        <br>
+
+        <h1>Cantidad de Acero en Vigas y Columnas</h1>
+
+        <label for="alto">Alto de Vigas/Columnas (cm):</label>
+        <input type="number" id="alto" step="0.1" placeholder="Ingresa el alto">
+        <br>
+        <label for="ancho">Ancho de Vigas/Columnas (cm):</label>
+        <input type="number" id="ancho" step="0.1" placeholder="Ingresa el ancho">
+
+        <label for="longitud">Longitud de Vigas/Columnas (m):</label>
+        <input type="number" id="longitud" step="0.1" placeholder="Ingresa la longitud">
+
+        <label for="cantidad">Cantidad de Vigas/Columnas:</label>
+        <input type="number" id="cantidad" placeholder="Ingresa la cantidad">
+
+        <label for="elementos">Elementos por Viga/Columna:</label>
+        <input type="number" id="elementos" placeholder="Ingresa el número de elementos">
+
+        <label for="largoVarilla">Largo de Varilla (m):</label>
+        <input type="number" id="largoVarilla" step="0.1" placeholder="Ingresa el largo de la varilla">
+
+        <label for="diametro">Diámetro de la Varilla principal:</label>
+        <select id="diametro">
+            <option value="0.249">1/4 (6.4 mm)</option>
+            <option value="0.560">3/8 (9.52 mm)</option>
+            <option value="0.994">1/2 (12.7 mm)</option>
+            <option value="1.552">5/8 (15.88 mm)</option>
+            <option value="2.235">3/4 (19.05 mm)</option>
+            <option value="3.042">7/8 (22.22 mm)</option>
+            <option value="3.973">1 (25.4 mm)</option>
+            <option value="5.060">1 1/8 (28.65 mm)</option>
+            <option value="6.404">1 1/4 (32.26 mm)</option>
+            <option value="7.907">1 3/8 (35.81 mm)</option>
+        </select>
+        <label for="diametro">Diámetro de la Varilla para estribo:</label>
+        <select id="diametroEstribo">
+            <option value="0.249">1/4 (6.4 mm)</option>
+            <option value="0.560">3/8 (9.52 mm)</option>
+            <option value="0.994">1/2 (12.7 mm)</option>
+            <option value="1.552">5/8 (15.88 mm)</option>
+            <option value="2.235">3/4 (19.05 mm)</option>
+            <option value="3.042">7/8 (22.22 mm)</option>
+            <option value="3.973">1 (25.4 mm)</option>
+            <option value="5.060">1 1/8 (28.65 mm)</option>
+            <option value="6.404">1 1/4 (32.26 mm)</option>
+            <option value="7.907">1 3/8 (35.81 mm)</option>
+        </select>
+        <label for="traslape">Longitud del Traslape (cm):</label>
+        <input type="number" id="traslape" step="0.1" placeholder="Ingresa la longitud del traslape">
+        <label for="Canttraslape">Cantidad Traslape :</label>
+        <input type="number" id="Canttraslape" step="1.0" placeholder="Ingresa cuántos traslapes">
+        <label for="distanciaEstribos">Distancia entre Estribos (cm):</label>
+        <input type="number" id="distanciaEstribos" step="0.1" placeholder="Ingresa la distancia entre estribos">
+        <label for="distanciaAmarre">Distancia de corte alambre de amarre (cm):</label>
+        <input type="number" id="distanciaAmarre" step="0.1" placeholder="Ingresa la distancia de amarre">
+
+        <br>
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="copiarResultados()">Copiar Resultados</button>
+    </div>
+    <div id="resultados"></div>
+
+    <script>
+        function calcular() {
+            // Obtener los valores ingresados por el usuario
+            const alto = parseFloat(document.getElementById('alto').value) || 0;
+            const ancho = parseFloat(document.getElementById('ancho').value) || 0;
+            const longitud = parseFloat(document.getElementById('longitud').value) || 0;
+            const cantidad = parseInt(document.getElementById('cantidad').value) || 0;
+            const elementos = parseInt(document.getElementById('elementos').value) || 0;
+            const largoVarilla = parseFloat(document.getElementById('largoVarilla').value) || 0;
+            const diametroVarilla = parseFloat(document.getElementById('diametro').value) || 0;
+            const diametroEstribo = parseFloat(document.getElementById('diametroEstribo').value) || 0;
+            const traslape = parseFloat(document.getElementById('traslape').value) || 0;
+            const Canttraslape = parseFloat(document.getElementById('Canttraslape').value) || 0;
+            const distanciaEstribos = parseFloat(document.getElementById('distanciaEstribos').value) || 0;
+            const distanciaAmarre = parseFloat(document.getElementById('distanciaAmarre').value) || 0;
+
+
+            // Calcular la longitud total a cubrir
+            const longitudTotal = cantidad * longitud + ((traslape / 100) * Canttraslape);
+
+            // Calcular la cantidad de varillas necesarias
+            const cantidadVarillas = Math.ceil(longitudTotal / largoVarilla) * elementos;
+            const pata = diametroVarilla * 4;
+            // Calcular la cantidad de estribos
+            const estriboCubierto = ((ancho + alto) * 2) - 10 + pata;
+            const longitudEstribos = Math.ceil(longitudTotal / distanciaEstribos) * estriboCubierto;
+            const cantidadEstribos = Math.ceil(longitudEstribos / largoVarilla);
+
+            // Calcular la cantidad de alambre de amarre
+            const cantidadAmarres = elementos * cantidad;
+            const metrosAmarreTotal = distanciaAmarre * cantidadAmarres;
+            const librasAmarreTotal = Math.ceil(metrosAmarreTotal / 27.5); // Suponiendo que 1 libra tiene 27.5 metros
+
+            // Mostrar resultados
+            const resultadosHTML = `
+                <p>Cantidad de Varillas Principales: ${cantidadVarillas} </p>
+                <p>Cantidad de Varillas para Estribos: ${cantidadEstribos} </p>
+                <p>Cantidad de Libras de Alambre de Amarre: ${librasAmarreTotal.toFixed(2)} lb</p>
+            `;
+
+            document.getElementById('resultados').innerHTML = resultadosHTML;
+        }
+
+        function copiarResultados() {
+            const resultados = document.getElementById('resultados').innerText;
+
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = resultados;
+            document.body.appendChild(tempTextArea);
+
+            tempTextArea.select();
+            document.execCommand('copy');
+
+            document.body.removeChild(tempTextArea);
+
+            alert('Resultados copiados al portapapeles');
+        }
+        // Obtener todos los elementos input
+        const inputs = document.querySelectorAll('input');
+
+        // Agregar un listener de evento a cada input
+        inputs.forEach((input, index) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    // Evitar el comportamiento predeterminado de la tecla Enter (por ejemplo, evitar enviar formularios)
+                    event.preventDefault();
+
+                    // Obtener el siguiente input
+                    const nextInput = inputs[index + 1];
+
+                    // Enfocar el siguiente input si existe
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/repello.css">
+    <link rel="stylesheet" href="../../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Volumen de Zapata</title>
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="../index.html"><i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a></li>
+                    <li><a href="../Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+                </ul>
+            </li>
+            <li><a href="../SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a></li>
+           
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../video.html"
+                    target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../../JS/navmenu.js"></script>
+    <header>
+        <h1>Calculadora de Volumen de Zapata</h1>
+    </header>
+
+    <section>
+        <form id="volumenZapataForm">
+            <label for="tipoZapata">Tipo de Zapata:</label>
+            <select id="tipoZapata">
+                <option value="simple">Zapata Simple</option>
+                <option value="corrida">Zapata Corrida</option>
+                <option value="centrada">Zapata Centrada</option>
+                <option value="excentrica">Zapata Excéntrica</option>
+                <option value="irregular">Zapata Irregular</option>
+                <option value="colindante">Zapata Colindante</option>
+            </select>
+
+            <label for="ancho">Ancho de la Zapata (m):</label>
+            <input type="number" id="ancho" step="0.1" placeholder="Ingrese el ancho">
+
+            <label for="largo">Largo de la Zapata (m):</label>
+            <input type="number" id="largo" step="0.1" placeholder="Ingrese el largo">
+
+            <label for="profundidad">Profundidad de la Zapata (m):</label>
+            <input type="number" id="profundidad" step="0.1" placeholder="Ingrese la profundidad">
+
+            <button type="button" onclick="calcularVolumen()">Calcular</button>
+        </form>
+        <a href="../Concreto/dosificacion.html" target="_blank" title="Calcular Dosificación">Enviar a Mezclar</a>
+        <a href="../Concreto/zapata.html" target="_blank" title="Calcular presión sobre el suelo y área requerida">Cálculo de Zapata</a>
+        <a href="../Concreto/zapataT.html" target="_blank" title="Calcular volumen de Zapata Trapezoidal">Calculo para
+            Zapata Trapezoidal</a>
+        <div id="resultados"></div>
+    </section>
+
+
+
+    <script>
+        function calcularVolumen() {
+            const tipoZapata = document.getElementById('tipoZapata').value;
+            const ancho = parseFloat(document.getElementById('ancho').value);
+            const largo = parseFloat(document.getElementById('largo').value);
+            const profundidad = parseFloat(document.getElementById('profundidad').value);
+
+            if (isNaN(ancho) || isNaN(largo) || isNaN(profundidad)) {
+                alert('Por favor, ingrese valores numéricos válidos.');
+                return;
+            }
+
+            let factorCorreccion = 1.0;
+
+            // Aplicar correcciones según el tipo de zapata
+            switch (tipoZapata) {
+                case 'corrida':
+                    factorCorreccion = 1.2; //  ajuste para zapatas corridas
+                    break;
+                case 'excentrica':
+                    factorCorreccion = 1.5; // Ajuste para zapatas excéntricas
+                    break;
+                // Puedes agregar más casos según tus necesidades
+            }
+
+            const volumen = ancho * largo * profundidad * factorCorreccion;
+
+            const resultadosHTML = `
+                <p>Volumen de la Zapata (${tipoZapata}): ${volumen.toFixed(2)} m³</p>
+            `;
+
+            document.getElementById('resultados').innerHTML = resultadosHTML;
+        }
+
+        const inputs = document.querySelectorAll('input');
+
+        inputs.forEach((input, index) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const nextInput = inputs[index + 1];
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="../CSS/bloque.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Sumatoria de Costos</title>
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+
+    
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="/HTML/index.html" class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../HTML/formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../HTML/Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a>
+                    </li>
+                    <li><a href="../HTML/Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../HTML/Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../HTML/Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../HTML/cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../HTML/Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../HTML/Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad
+                            de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+
+                </ul>
+            </li>
+            <li><a href="../HTML/SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a></li>
+            
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../HTML/video.html" target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../JS/navmenu.js"></script>
+
+    <h1>SUMATORIA DE PRECIOS</h1> <br>
+    <textarea id="texto" rows="10" cols="50" title="
+    INGRESE COSTOS DE MATERIALES. Esta suma se realiza únicamente para materiales en un formato específico (al copiar los resultados en los diferentes módulos de INGMASTER) "></textarea><br>
+    <button onclick="sumarPrecios()">Sumar Precios</button>
+    <button onclick="copiarResultados()">Copiar Resultados</button>
+
+</body>
+<script>
+    function sumarPrecios() {
+        // Obtener el contenido del textarea
+        const texto = document.getElementById('texto').value;
+
+        // Dividir el texto en líneas
+        const lineas = texto.split('\n');
+
+        // Inicializar variables para precios y costos totales
+        let precioCemento = 0;
+        let costoTotalCemento = 0;
+        let costoTotalAcero = 0;
+        let precioArena = 0;
+        let costoTotalArena = 0;
+        let precioGrava = 0;
+        let costoTotalGrava = 0;
+        let precioArenilla = 0; // Nuevo costo de Arenilla
+        let costoTotalArenilla = 0; // Nuevo costo total de Arenilla
+        let precioAcero = 0;
+
+        // Recorrer cada línea
+        lineas.forEach((linea) => {
+            // Buscar coincidencias con los elementos específicos
+            if (linea.includes("Costo de Cemento")) {
+                // Extraer el precio de la línea
+                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
+                // Sumar al total de cemento
+                precioCemento += precio;
+            } else if (linea.includes("Costo de Arena")) {
+                // Extraer el precio de la línea
+                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
+                // Sumar al total de arena
+                precioArena += precio;
+            } else if (linea.includes("Costo de Grava")) {
+                // Extraer el precio de la línea
+                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
+                // Sumar al total de grava
+                precioGrava += precio;
+            } else if (linea.includes("Costo de Arenilla")) {
+                // Extraer el precio de la línea para Arenilla
+                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
+                // Sumar al total de Arenilla
+                precioArenilla += precio;
+            } else if (linea.includes("Costo del Acero")) {
+                // Extraer el precio de la línea
+                const precios = linea.match(/C\$(\d+\.\d+)/g);
+
+                // Sumar al total de acero por cada ocurrencia
+                if (precios) {
+                    precios.forEach((precio) => {
+                        precioAcero += parseFloat(precio.substring(2));
+                    });
+                }
+            }
+        });
+
+        // Calcular los costos totales
+        costoTotalCemento = precioCemento;
+        costoTotalArena = precioArena;
+        costoTotalGrava = precioGrava;
+        costoTotalArenilla = precioArenilla; // Nuevo costo total de Arenilla
+        costoTotalAcero = precioAcero;
+        const costoTotal = precioCemento + precioArena + precioGrava + precioArenilla + precioAcero; // Añadir Arenilla al total
+
+        // Mostrar los resultados
+        alert(`Precio de Cemento: C$${precioCemento.toFixed(2)}\nCosto Total de Cemento: C$${costoTotalCemento.toFixed(2)}\n\nPrecio de Arena: C$${precioArena.toFixed(2)}\nCosto Total de Arena: C$${costoTotalArena.toFixed(2)}\n\nPrecio de Grava: C$${precioGrava.toFixed(2)}\nCosto Total de Grava: C$${costoTotalGrava.toFixed(2)}\n\nPrecio de Arenilla: C$${precioArenilla.toFixed(2)}\nCosto Total de Arenilla: C$${costoTotalArenilla.toFixed(2)}\n\nTotal del Acero: C$${precioAcero.toFixed(2)}\n\nCosto Total: C$${costoTotal.toFixed(2)}`);
+    }
+
+    
+    function copiarResultados() {
+        const resultadoTextarea = document.getElementById('texto');
+        resultadoTextarea.select();
+        document.execCommand('copy');
+        alert("Resultados copiados al portapapeles.");
+    }
+</script>
+
+</html>

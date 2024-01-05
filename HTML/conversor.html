@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversiones</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        br {
+            margin: 20px;
+        }
+
+        label,
+        input,
+        select {
+            margin: 5px;
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Calculadora de Conversiones</h1>
+
+    <label for="categoria">Seleccione una categoría:</label>
+    <select id="categoria" onchange="cargarUnidades()">
+        <option value="area">Área</option>
+        <option value="longitud">Longitud</option>
+        <option value="masa">Masa</option>
+        <option value="presion">Presión</option>
+        <option value="temperatura">Temperatura</option>
+        <option value="velocidad">Velocidad</option>
+        <option value="volumen">Volumen</option>
+    </select>
+    <br>
+
+    <div class="container">
+        <div class="input-container">
+            <input type="number" id="numero1" name="numero1" oninput="realizarConversion()" />
+        </div>
+        <select name="unidad" id="n1" onchange="swapUnidades()">
+            <option value=""></option>
+        </select>
+
+    </div>
+
+    <label for="igual">=</label>
+
+    <div class="container">
+        <div class="input-container">
+            <input type="number" id="numero2" name="numero2" oninput="realizarConversion()" />
+        </div>
+        <select name="unidad2" id="n2" onchange="swapUnidades()">
+            <option value=""></option>
+        </select>
+
+
+    </div>
+
+    <br>
+    <label for="formula">Fórmula: <span id="formulaResultado"></span></label>
+
+    <script>
+        function cargarUnidades() {
+            var categoria = document.getElementById('categoria').value;
+            var selectN1 = document.getElementById('n1');
+            var selectN2 = document.getElementById('n2');
+
+            selectN1.innerHTML = '';
+            selectN2.innerHTML = '';
+
+            var unidades = [];
+
+            if (categoria === 'area') {
+                unidades = ['Centímetro Cuadrado', 'Pulgada Cuadrada', 'Metro Cuadrado', 'Kilómetro Cuadrado', 'Milla Cuadrada', 'Yarda Cuadrada', 'Pie Cuadrado', 'Hectárea Cuadrada', 'Acre'];
+            } else if (categoria === 'longitud') {
+                unidades = ['Nanómetro', 'Micrómetro', 'Milímetro', 'Centímetro', 'Metro', 'Kilómetro', 'Milla', 'Milla Náutica', 'Yarda', 'Pie', 'Pulgada'];
+            } else if (categoria === 'masa') {
+                unidades = ['Microgramo', 'Miligramo', 'Gramo', 'Kilogramo', 'Tonelada', 'Tonelada Corta', 'Tonelada Larga', 'Libra', 'Stone', 'Onza'];
+            } else if (categoria === 'presion') {
+                unidades = ['Atmósfera', 'Bar', 'Libra por Pulgada Cuadrada', 'Pascal', 'Torr'];
+            } else if (categoria === 'temperatura') {
+                unidades = ['Celsius', 'Fahrenheit', 'Kelvin'];
+            } else if (categoria === 'tiempo') {
+                unidades = ['Nanosegundo', 'Milisegundo', 'Microsegundo', 'Segundo', 'Minuto', 'Hora', 'Día', 'Semana', 'Mes', 'Año', 'Lustro', 'Década', 'Siglo'];
+            } else if (categoria === 'velocidad') {
+                unidades = ['Metro por Segundo', 'Pie por Segundo', 'Kilómetro por Hora', 'Milla por Hora', 'Nudo'];
+            } else if (categoria === 'volumen') {
+                unidades = ['Metro Cúbico', 'Pie Cúbico', 'Pulgada Cúbica', 'Litro', 'Mililitro', 'Galón Estadounidense', 'Cuarto Estadounidense', 'Pinta Estadounidense', 'Taza Estadounidense', 'Onza Líquida Estadounidense', 'Galón Imperial', 'Cuarto Imperial', 'Pinta Imperial', 'Taza Imperial', 'Onza Líquida Imperial', 'Cucharada Imperial', 'Cucharadita Imperial'];
+            }
+
+            for (var i = 0; i < unidades.length; i++) {
+                var option = document.createElement('option');
+                option.value = unidades[i];
+                option.text = unidades[i];
+
+                selectN1.add(option);
+
+                var clonedOption = option.cloneNode(true);
+                selectN2.add(clonedOption);
+            }
+
+            // Llamar a realizarConversion al cargar las unidades
+            realizarConversion();
+        }
+
+        function swapUnidades() {
+            var selectN1 = document.getElementById('n1');
+            var selectN2 = document.getElementById('n2');
+
+            // Intercambiar valores seleccionados
+            var temp = selectN1.value;
+            selectN1.value = selectN2.value;
+            selectN2.value = temp;
+
+            // Llamar a realizarConversion después de intercambiar unidades
+            realizarConversion();
+        }
+
+        function realizarConversion() {
+            var numero1 = document.getElementById('numero1').value;
+            var unidad1 = document.getElementById('n1').value;
+            var numero2 = document.getElementById('numero2').value;
+            var unidad2 = document.getElementById('n2').value;
+
+            // Realizar la conversión de numero1 a numero2 si hay un valor en numero1 y una unidad en n1
+            if (numero1 && unidad1) {
+                var resultado = calcularConversion(numero1, unidad1, unidad2);
+                document.getElementById('numero2').value = resultado;
+            }
+
+            // Realizar la conversión de numero2 a numero1 si hay un valor en numero2 y una unidad en n2
+            if (numero2 && unidad2) {
+                var resultadoInverso = calcularConversion(numero2, unidad2, unidad1);
+                document.getElementById('numero1').value = resultadoInverso;
+            }
+
+            // Mostrar el resultado en el label de fórmula (puedes eliminar esta línea si no es necesaria)
+            document.getElementById('formulaResultado').innerText = `${numero1} ${unidad1} = ${numero2} ${unidad2}`;
+        }
+
+        function calcularConversion(valor, unidadOrigen, unidadDestino) {
+            // Tu código anterior para otras categorías
+
+            // Para la categoría 'area':
+            if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Pulgada Cuadrada') {
+                return valor * 0.155; // Fórmula de conversión aproximada
+            } else if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Metro Cuadrado') {
+                return valor * 0.0001; // Fórmula de conversión
+            } else if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Kilómetro Cuadrado') {
+                return valor * 1e-10; // Fórmula de conversión
+            } else if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Milla Cuadrada') {
+                return valor * 3.861e-14; // Fórmula de conversión
+            } else if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Yarda Cuadrada') {
+                return valor * 1.196e-5; // Fórmula de conversión
+            } else if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Pie Cuadrado') {
+                return valor * 0.0001; // Fórmula de conversión
+            } else if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Hectárea Cuadrada') {
+                return valor * 1e-8; // Fórmula de conversión
+            } else if (unidadOrigen === 'Centímetro Cuadrado' && unidadDestino === 'Acre') {
+                return valor * 2.471e-8; // Fórmula de conversión
+            }
+            // Agrega más casos según sea necesario
+
+            // Si las unidades son las mismas, no hay conversión
+            return valor;
+        }
+    </script>
+
+
+</body>
+
+</html>

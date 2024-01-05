@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="../../CSS/repello.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <title>Repello Grueso</title>
+
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="../index.html"><i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a></li>
+                    <li><a href="../Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+                </ul>
+            </li>
+            <li><a href="../SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios</i></a></li>
+           
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../video.html"
+                    target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../../JS/navmenu.js"></script>
+    <div class="repello">
+        <h1>Calculadora de Repello Grueso</h1>
+        <a href="../Concreto/repelloFino.html" target="_blank"
+        title="Calcula cantidad de cemento y arenilla para repello fino">Calcular Repello Fino</a>
+        <label for="area" title="CALULAR ÁREA">Área de la Pared (m²):</label>
+        <input type="number" id="area" step="0.01" placeholder="Ingresa el área de la pared">
+        <a href="../Concreto/areas.html" target="_blank"
+            title="Calcular área de una o más paredes a la vez">Calcular</a>
+        <label for="areaN" title="CALULAR ÁREA">Área Negativa (m²):</label>
+        <input type="number" id="areaN" step="0.01" placeholder="Ingresa el área que resta de la pared">
+        <a href="../Concreto/areas.html" target="_blank"
+            title="calcular área de puertas, ventanas y otros elementos que no ocupan repello">Calcular </a>
+        <label for="grosor">Grosor del Repello (cm):</label>
+        <input type="number" id="grosor" step="0.1" placeholder="Ingresa el grosor del repello"
+            title="Nota: Para paredes con repello de 1 cm. de espesor, agregar 20 kg/m2 por cada cara repellada para estimar el peso (RNC)">
+
+            <div class="input-group">
+                <label for="proporcion">Proporción de Mortero (Cemento:Arena):</label>
+                <select id="proporcion" required oninput="calcularCantidad()"
+                    title="Por regla general, se deben emplear cuatro partes de arena para cemento por una de cemento (Portland o gris) y una de agua. Dependiendo del tipo de cemento (de albañilería, por ejemplo).">
+            
+                    <option value="510, 0.97" title="4000 PSI">1:2</option>
+                    <option value="454, 1.10" title="3980 PSI">1:3</option>
+                    <option value="364, 1.16" title="3400 PSI">1:4</option>
+                    <option value="302, 1.18" title="2850 PSI">1:5</option>
+                    <option value="260, 1.20" title="2275 PSI">1:6</option>
+                    <option value="228, 1.25" title="1700 PSI">1:7</option>
+            
+                </select>
+            </div>
+
+     
+        <label for="precioCemento">Precio de la Bolsa de Cemento (C$):</label>
+        <input type="number" id="precioCemento" step="0.01" placeholder="Ingresa el precio de la bolsa de cemento">
+
+        <label for="precioArena">Precio del Metro Cúbico de Arena (C$):</label>
+        <input type="number" id="precioArena" step="0.01" placeholder="Ingresa el precio del metro cúbico de arena">
+
+
+        <h2>Resultados</h2>
+        <div id="resultados"></div>
+
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="copiarResultados()">Copiar Resultados</button>
+    </div>
+    <script>
+        function calcular() {
+            const area = parseFloat(document.getElementById('area').value);
+            const areaN = parseFloat(document.getElementById('areaN').value);
+            const grosor = parseFloat(document.getElementById('grosor').value);
+            const proporcion = document.getElementById('proporcion').value;
+            const precioCemento = parseFloat(document.getElementById('precioCemento').value);
+            const precioArena = parseFloat(document.getElementById('precioArena').value);
+            const selectProporcion = document.getElementById("proporcion");
+            const valorSeleccionado = selectProporcion.value;
+            const valores = valorSeleccionado.split(",");
+            const proporcionCemento = parseFloat(valores[0]);
+            const proporcionArena = parseFloat(valores[1]);
+            const areaT = area - areaN;
+                    
+            // Convertir grosor a metros
+            const grosorMetros = grosor / 100;
+
+            // Calcular volumen del repello (m³)
+            const volumenRepello = areaT * grosorMetros;
+
+            const volumenCemento =Math.ceil(volumenRepello * (proporcionCemento / 42.5)).toFixed(0); //tomando en cuenta que las bolsas de cemento son de 42.5kg 
+            const volumenArena = volumenRepello * proporcionArena ;
+   
+
+            // Calcular costos
+            const costoCemento = volumenCemento * precioCemento;
+            const costoArena = volumenArena * precioArena;
+   
+
+            // Calcular costo total
+            const costoTotal = costoCemento + costoArena;
+
+
+            // Mostrar resultados
+            const resultadosHTML = `
+                <p>Cantidad de Cemento:  ${parseInt(volumenCemento)} bolsas de 42.5kg</p>
+                <p>Cantidad de Arena: ${volumenArena.toFixed(2)} m³</p>
+                <p>Metros Cúbicos de Repello: ${volumenRepello.toFixed(2)} m³</p>
+                <p>Costo de Cemento: C$${costoCemento.toFixed(2)}</p>
+                <p>Costo de Arena: C$${costoArena.toFixed(2)}</p>
+                <p>Costo Total: C$${costoTotal.toFixed(2)}</p>
+            `;
+
+            document.getElementById('resultados').innerHTML = resultadosHTML;
+        }
+        function copiarResultados() {
+            const resultadosTexto = document.getElementById('resultados').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = resultadosTexto;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Resultados copiados al portapapeles.');
+        }
+        // Obtener todos los elementos input
+        const inputs = document.querySelectorAll('input');
+
+        // Agregar un listener de evento a cada input
+        inputs.forEach((input, index) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    // Evitar el comportamiento predeterminado de la tecla Enter (por ejemplo, evitar enviar formularios)
+                    event.preventDefault();
+
+                    // Obtener el siguiente input
+                    const nextInput = inputs[index + 1];
+
+                    // Enfocar el siguiente input si existe
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

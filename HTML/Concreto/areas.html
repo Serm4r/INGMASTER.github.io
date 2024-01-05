@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/areas.css">
+    <link rel="stylesheet" href="../../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Calculo de Áreas</title>
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="../index.html"><i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a></li>
+                    <li><a href="../Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+                </ul>
+            </li>
+            <li><a href="../SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a></li>
+           
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../video.html" target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../../JS/navmenu.js"></script>
+    <div id="formContainer">
+        <!-- Formulario inicial -->
+        <h1>CÁLCULO DE ÁREAS</h1>
+        <div class="calcForm">
+            <input type="text" id="nombreElemento" placeholder="Nombre del Elemento" class="formName"
+                title="Nombre del elemento">
+            <input type="number" placeholder="Cantidad" class="numberInput" step="1.0" title="Ingrese cantidad">
+            <input type="number" placeholder="Alto (m)" class="numInput" title="Ingrese Altura">
+            <input type="number" placeholder="Ancho (m)" class="numInput" title="Ingrese Ancho">
+            <span class="result">Área: <span class="output">0</span> m²</span>
+            <button class="copyResult">Copiar Resultado</button>
+            <button class="addCalc">Agregar Cálculo</button>
+        </div>
+    </div>
+    <br>
+    <button id="sumAll">Sumar Todo
+        <span id="span1"></span>
+        <span id="span2"></span>
+        <span id="span3"></span>
+        <span id="span4"></span>
+    </button>
+    <button id="copyAll">Copiar Todo</button>
+    <div id="resultado"></div>
+    <script>
+        // Función para calcular el área multiplicando el alto por el ancho
+        function calcularArea(alto, ancho, cantidad) {
+            alto = parseFloat(alto);
+            ancho = parseFloat(ancho);
+            cantidad = parseFloat(cantidad);
+            return (alto * ancho * cantidad).toFixed(2);
+        }
+
+        // Función para enfocar el siguiente input al presionar Enter
+        function focusNextInput(currentInput) {
+            const inputs = document.querySelectorAll('input');
+            const currentIndex = Array.from(inputs).indexOf(currentInput);
+            const nextInput = inputs[currentIndex + 1];
+
+            if (nextInput) {
+                nextInput.focus();
+            }
+        }
+
+        // Agregar un nuevo cálculo al hacer clic en "Agregar Cálculo"
+        document.querySelector("#formContainer").addEventListener("click", function (event) {
+            if (event.target.classList.contains("addCalc")) {
+                const calcForm = event.target.parentElement;
+                const newCalcForm = calcForm.cloneNode(true);
+                newCalcForm.querySelector(".result .output").textContent = "0";
+                newCalcForm.querySelector(".formName").value = ""; // Limpiar el nombre
+                newCalcForm.querySelector(".numberInput").value = ""; // Limpiar el campo de cantidad
+                newCalcForm.querySelector(".numInput:nth-child(3)").value = ""; // Limpiar el campo de alto
+                newCalcForm.querySelector(".numInput:nth-child(4)").value = ""; // Limpiar el campo de ancho
+                calcForm.after(newCalcForm);
+            }
+        });
+
+        // Calcular y mostrar el resultado automáticamente al cambiar los valores
+        document.querySelector("#formContainer").addEventListener("input", function (event) {
+            if (event.target.classList.contains("numInput") || event.target.classList.contains("numberInput")) {
+                const calcForm = event.target.parentElement;
+                const alto = calcForm.querySelector(".numInput:nth-child(3)").value;
+                const ancho = calcForm.querySelector(".numInput:nth-child(4)").value;
+                const cantidad = calcForm.querySelector(".numberInput").value;
+                const resultado = calcularArea(alto, ancho, cantidad);
+                calcForm.querySelector(".result .output").textContent = resultado;
+            }
+        });
+
+        // Copiar el resultado del cálculo al hacer clic en "Copiar Resultado"
+        document.querySelector("#formContainer").addEventListener("click", function (event) {
+            if (event.target.classList.contains("copyResult")) {
+                const calcForm = event.target.parentElement;
+                const result = calcForm.querySelector(".result .output").textContent;
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = result;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextArea);
+                alert("Resultado copiado al portapapeles.");
+            }
+        });
+
+        // Sumar todos los resultados al hacer clic en "Sumar Todo"
+        document.querySelector("#sumAll").addEventListener("click", function () {
+            let total = 0;
+            const resultados = document.querySelectorAll(".result .output");
+            resultados.forEach(function (result) {
+                total += parseFloat(result.textContent);
+            });
+          // Mostrar el resultado en el nuevo div
+        document.getElementById('resultado').innerHTML = 'Total de áreas: ' + total.toFixed(2) + ' m²';
+        });
+
+        // Copiar todos los resultados al hacer clic en "Copiar Todo"
+        document.querySelector("#copyAll").addEventListener("click", function () {
+            let resultadosTexto = "Áreas:\n";
+            const calcForms = document.querySelectorAll(".calcForm");
+            calcForms.forEach(function (calcForm, index) {
+                const formName = calcForm.querySelector(".formName").value || `Cálculo ${index + 1}`;
+                const result = calcForm.querySelector(".result .output").textContent;
+                resultadosTexto += `${formName}: ${result} m²\n`;
+            });
+
+            // Agregar el resultado total de "Sumar Todo"
+            let total = 0;
+            const resultados = document.querySelectorAll(".result .output");
+            resultados.forEach(function (result) {
+                total += parseFloat(result.textContent);
+            });
+            resultadosTexto += `Total: ${total.toFixed(2)} m²`;
+
+            // Copiar al portapapeles
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = resultadosTexto;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            alert("Áreas copiadas al portapapeles.");
+        });
+
+        // Obtener todos los elementos input, incluidos los nuevos
+        const formContainer = document.querySelector("#formContainer");
+
+        formContainer.addEventListener("keydown", function (event) {
+            if (event.key === 'Enter' && event.target.tagName === "INPUT") {
+                focusNextInput(event.target);
+            }
+        });
+    </script>
+</body>
+
+</html>

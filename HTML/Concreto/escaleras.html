@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../CSS/repello.css">
+    <link rel="stylesheet" href="../../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Escaleras</title>
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="../index.html"><i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a></li>
+                    <li><a href="../Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+                </ul>
+            </li>
+            <li><a href="../SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a></li>
+           
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../video.html" target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../../JS/navmenu.js"></script>
+
+    <h1>Calculadora de Volumen de Escaleras</h1>
+    <br>
+
+    <form id="escaleraForm">
+        <label for="anchoEscalera">a: Ancho de la Escalera (m):</label>
+        <input type="number" id="anchoEscalera" step="0.01" required title="Se recomienda poner un descanso cada 10 escalones">
+
+        <label for="longitudEscalera">b: Longitud Horizontal de la Escalera (m):</label>
+        <input type="number" id="longitudEscalera" step="0.01" required title="Se recomienda poner un descanso cada 10 escalones">
+
+        <label for="alturaEscalera">c: Altura de la Escalera (m):</label>
+        <input type="number" id="alturaEscalera" step="0.01" required title="Elevación máxima de la escalera">
+
+        <label for="anchoPaso">d: Ancho del Paso del Escalón (cm):</label>
+        <input type="number" id="anchoPaso" required title="HUELLA: se recomienda que no sea menor de 28cm">
+
+        <label for="altoEscalon">e: Altura del Escalón (cm):</label>
+        <input type="number" id="altoEscalon" required title="La altura máxima recomendada es de 18cm">
+
+        <button type="button" onclick="calcularVolumen()">Calcular Volumen</button>
+        <button type="button" onclick="copiarResultados()">Copiar Resultados</button>
+    </form>
+    <a href="../Concreto/dosificacion.html" target="_blank" title="Calcular volumen">Enviar a Mezclar</a>
+    <div id="resultado"></div>
+    <img src="../../IMG/escalera.png" alt="">
+    <script>
+        function calcularVolumen() {
+            const anchoEscalera = parseFloat(document.getElementById("anchoEscalera").value);
+            const longitudEscalera = parseFloat(document.getElementById("longitudEscalera").value);
+            const alturaEscalera = parseFloat(document.getElementById("alturaEscalera").value);
+            const anchoPaso = parseFloat(document.getElementById("anchoPaso").value) / 100; // Convertir a metros
+            const altoEscalon = parseFloat(document.getElementById("altoEscalon").value) / 100; // Convertir a metros
+
+            // Calcular la cantidad de escalones
+            const cantidadEscalones = Math.ceil(alturaEscalera / altoEscalon);
+            
+               // Calcular el volumen de los escalones
+    const volumenEscalones = (cantidadEscalones) * anchoEscalera * anchoPaso * altoEscalon;
+    const volumenEscalon= anchoEscalera * anchoPaso * altoEscalon ;
+
+// Calcular el volumen de la base
+   const volumenCubo= longitudEscalera * anchoEscalera * alturaEscalera;
+
+    // Calcular el volumen total
+    const volumenTotal = volumenEscalon + (volumenCubo - volumenEscalones - volumenEscalon);
+
+    // Mostrar el resultado
+    document.getElementById("resultado").textContent = `Volumen de la Escalera: ${volumenTotal.toFixed(3)} metros cúbicos (${cantidadEscalones} escalones)`;
+}
+
+        function copiarResultados() {
+            const resultadosTexto = document.getElementById('resultado').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = resultadosTexto;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Resultados copiados al portapapeles.');
+        }
+
+        // Obtener todos los elementos input
+        const inputs = document.querySelectorAll('input');
+
+        // Agregar un listener de evento a cada input
+        inputs.forEach((input, index) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    // Evitar el comportamiento predeterminado de la tecla Enter (por ejemplo, evitar enviar formularios)
+                    event.preventDefault();
+
+                    // Obtener el siguiente input
+                    const nextInput = inputs[index + 1];
+
+                    // Enfocar el siguiente input si existe
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

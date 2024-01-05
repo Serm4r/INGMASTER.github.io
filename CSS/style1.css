@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+    /* Establece el color del texto a blanco */
+}
+
+/* Agrega contorno negro alrededor del texto */
+.content-header,
+.content-text,
+.name,
+.des {
+    text-shadow: 3px 3px 8px #0077cc;
+    /* Ajusta la intensidad del sombreado según sea necesario */
+    -webkit-text-stroke: 1px black;
+    /* Contorno de 1px en navegadores basados en WebKit (Chrome, Safari) */
+    text-stroke: 1px black;
+    /* Contorno de 1px */
+}
+
+/* Agrega un sombreado azul a las letras del contenido */
+.content-header,
+.content-text,
+.name,
+.des {
+    text-shadow: 3px 3px 8px #0077cc;
+    /* Ajusta el color y la intensidad del sombreado según sea necesario */
+}
+
+.slider-container {
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #0cc2f0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0cc2f0;
+}

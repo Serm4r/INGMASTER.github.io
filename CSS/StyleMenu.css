@@ -1,0 +1,279 @@
+/* Fuentes de letra*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+  font-family:  Arial, Helvetica, sans-serif;
+}
+
+/* Estilos de botón */
+.btn {
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  background: #042331;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: left 0.4s ease;
+}
+
+/* Estilos de botón al pasar el cursor */
+.btn:hover {
+  background: #015981;
+}
+
+/* Estilos de botón al hacer clic */
+.btn.click {
+  left: 260px;
+}
+
+/* Estilos de icono en el botón */
+.btn span {
+  color: white;
+  font-size: 25px;
+  line-height: 45px;
+}
+
+/* Icono en el botón al hacer clic */
+.btn.click span:before {
+  content: '\f00d';
+}
+
+/* Estilos de la barra lateral */
+.sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  left: -250px;
+  background: #063146;
+  transition: left 0.4s ease;
+}
+
+/* Estilos de enlace en la barra lateral al pasar el cursor */
+.sidebar a:hover {
+  border-bottom: 2px solid #8ff0fd;
+  padding-bottom: 5px;
+  transition: all .4s;
+}
+
+/* Estilos de la barra lateral visible */
+.sidebar.show {
+  left: 0px;
+}
+
+/* Estilos de icono en los elementos de la barra lateral */
+.sidebar ul a i {
+  margin-right: 10px;
+}
+
+/* Estilos de texto en la barra lateral */
+.sidebar .text {
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 65px;
+  text-align: center;
+  background: #063146;
+  letter-spacing: 1px;
+}
+
+/* Estilos de la navegación */
+nav ul {
+  background: #042335;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+}
+
+/* Estilos de color del panel al pasar el cursor encima */
+nav ul:hover {
+  background: #021d2c;
+}
+
+/* Estilos de elementos de navegación */
+nav ul li {
+  line-height: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav ul li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para los elementos de menú en la barra lateral */
+nav ul li a {
+  position: relative;
+  color: white;
+  /* Color del texto */
+  text-decoration: none;
+  /* Elimina la subraya de los enlaces */
+  font-size: 12px;
+  /* Tamaño de fuente */
+  padding-left: 40px;
+  /* Espacio a la izquierda del texto */
+  font-weight: 500;
+  /* Peso de la fuente (500 es semibold) */
+  display: block;
+  /* Hace que el enlace sea un bloque de ancho completo */
+  width: 100%;
+  border-left: 3px solid transparent;
+  /* Borde izquierdo transparente (inicialmente) */
+}
+
+/* Estilos de elementos de navegación activos */
+nav ul li.active a {
+  color: cyan;
+  background: #134a66;
+  border-left-color: cyan;
+}
+
+/* Estilos de elementos de navegación al pasar el cursor */
+nav ul li a:hover {
+  background: #155e83;
+  border-left-color: aqua;
+  font-size: 13px;
+  padding-left: 50px;
+  transition: .5s;
+}
+
+/* Estilos de submenús */
+nav ul ul {
+  position: static;
+  /* Establece la posición de los submenús */
+  display: none;
+  /* Inicialmente, los submenús están ocultos */
+  transition: all .4s;
+  /* Agrega una transición suave a la visibilidad */
+}
+
+/* Estilos de submenús visibles */
+nav ul .Desing-show.show {
+  display: block;
+  /* Muestra los submenús cuando están activos */
+  transition: all .4s;
+  /* Agrega una transición suave a la visibilidad */
+}
+
+/* Estilos de submenús de configuración visibles */
+nav ul .Config-show.show1 {
+  display: block;
+  /* Muestra los submenús de configuración cuando están activos */
+}
+
+/* Estilos de submenús */
+nav ul ul li {
+  line-height: 42px;
+  border-top: none;
+}
+
+/* Estilos de submenús visibles */
+nav ul ul li a {
+  font-size: 12px;
+  color: #e6e6e6;
+  padding-left: 60px;
+}
+
+/* Estilos de elementos de submenús */
+nav ul li.active ul li a {
+  color: cyan;
+  background: #063146;
+  border-left-color: transparent;
+  font-size: 12px;
+}
+
+/* Estilos de elementos de submenús al pasar el cursor */
+nav ul ul li a:hover {
+  color: white !important;
+  background: teal !important;
+  border-left-color: white;
+  font-size: 13px;
+}
+
+/* Estilos de icono en los elementos de navegación */
+nav ul li a span {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+}
+
+/* Estilos de icono rotado en los elementos de navegación */
+nav ul li a span.rotate {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+/* Estilos generales del cuerpo */
+body {
+  height: 100vh;
+  background-color: #031a34;
+  background-image: url(IMG/UNI-Logo/uni.png);
+  background-position: right 20px top 15px;
+  background-repeat: no-repeat;
+  background-size: 5%;
+  background-attachment: fixed;
+  scroll-margin-block-start: 250px;
+}
+
+/* Estilos del contenido principal */
+.content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: -1;
+  text-align: center;
+}
+
+/* Estilos del encabezado */
+.content .header {
+  font-size: 45px;
+  font-weight: 600;
+}
+
+/* Estilos del párrafo */
+.content p {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+#uni-logo {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  height: auto;
+  /* Agrega la animación original como una transición */
+  transition: box-shadow 0.3s linear;
+}
+
+/* Aplica la animación al hacer hover */
+#uni-logo:hover {
+  box-shadow: -12px 12px 20px -1px rgb(0, 217, 255);
+}
+
+/* Aplica la animación al hacer hover */
+#uni-logo:hover {
+  box-shadow: -12px 12px 20px -1px rgb(0, 217, 255);
+}
+
+/*color de fondo de página */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #00091f;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}

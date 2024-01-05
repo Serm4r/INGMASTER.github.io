@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversión de unidades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #container {
+            width: 80%;
+            max-width: 400px;
+            font-weight: bold;
+        }
+
+        h1,
+        label,
+        #resultados {
+            color: white;
+        }
+
+        label {
+
+            display: block;
+            margin-bottom: 5px;
+
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        div#resultados {
+            margin-top: 20px;
+        }
+
+   
+button {
+    background-color: #002a68;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0059ac;
+    box-shadow: rgb(0, 182, 191) 0px 0px 5px, rgb(0, 182, 191) 0px 0px 15px, rgb(0, 182, 191) 0px 0px 20px, rgb(0, 182, 191) 0px 0px 25px;
+}
+
+
+        a {
+            color: rgb(51, 133, 241)
+        }
+
+        a:hover {
+            color: cyan;
+
+        }
+    </style>
+    <link rel="stylesheet" href="../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="/HTML/index.html" class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../HTML/formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../HTML/Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a>
+                    </li>
+                    <li><a href="../HTML/Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../HTML/Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../HTML/Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="/HTML/cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../HTML/Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../HTML/Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad
+                            de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+
+                </ul>
+            </li>
+            <li><a href="../HTML/SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios</i></a></li>
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../HTML/video.html" target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../JS/navmenu.js"></script>
+
+    <body>
+        <div id="container">
+            <h1>Calculadora de Conversiones</h1>
+
+            <label for="tipoConversor">Selecciona el tipo de conversión:</label>
+            <select id="tipoConversor">
+                <option value="distancia">Longitud</option>
+                <option value="volumen">Volumen</option>
+                <option value="peso">Masa</option>
+                <option value="presion">Presión</option>
+            </select>
+
+            <label for="unidadOrigen">Unidad:</label>
+            <select id="unidadOrigen"></select>
+
+            <label for="valor">Ingresa el valor:</label>
+            <input type="number" id="valor">
+
+            <label for="unidadDestino">Unidad convertida:</label>
+            <select id="unidadDestino"></select>
+
+            <div id="resultados"></div>
+
+            <button id="copiarResultados">Copiar Resultados</button>
+        </div>
+        <a href="../HTML/SUMATORIA.html" target="_blank" title="Sumar todos los resultados">SUMAR COSTO DE
+            MATERIALES</a>
+
+        <script>
+            const unidades = {
+                distancia: ['Metros', 'Kilómetros', 'Centímetros', 'Pies', 'Pulgadas'],
+                volumen: ['Metros cúbicos', 'Litros', 'Mililitros', 'Galones', 'Onzas líquidas'],
+                peso: ['Kilogramos', 'Gramos', 'Libras', 'Onzas', 'Toneladas'],
+                presion: ['Pascal', 'Libra por pulgada cuadrada (PSI)', 'Bar', 'Torr']
+            };
+
+            function cargarUnidades(tipo) {
+                const selectOrigen = document.getElementById('unidadOrigen');
+                const selectDestino = document.getElementById('unidadDestino');
+
+                selectOrigen.innerHTML = '';
+                selectDestino.innerHTML = '';
+
+                unidades[tipo].forEach((unidad) => {
+                    const optionOrigen = document.createElement('option');
+                    const optionDestino = document.createElement('option');
+
+                    optionOrigen.value = unidad;
+                    optionOrigen.text = unidad;
+
+                    optionDestino.value = unidad;
+                    optionDestino.text = unidad;
+
+                    selectOrigen.add(optionOrigen);
+                    selectDestino.add(optionDestino);
+                });
+
+                // Llamar a convertir después de cargar las unidades
+                convertir();
+            }
+
+            // Cargar unidades al inicio
+            cargarUnidades('distancia');
+
+            // Escuchar cambios en los elementos relevantes y llamar a convertir
+            document.getElementById('tipoConversor').addEventListener('change', function () {
+                cargarUnidades(this.value);
+                convertir();
+            });
+
+            document.getElementById('unidadOrigen').addEventListener('change', convertir);
+            document.getElementById('valor').addEventListener('input', convertir);
+            document.getElementById('unidadDestino').addEventListener('change', convertir);
+
+            document.getElementById('copiarResultados').addEventListener('click', function () {
+                copiarAlPortapapeles();
+            });
+
+            function convertir() {
+                const tipoConversor = document.getElementById('tipoConversor').value;
+                const unidadOrigen = document.getElementById('unidadOrigen').value;
+                const valor = parseFloat(document.getElementById('valor').value);
+                const unidadDestino = document.getElementById('unidadDestino').value;
+
+                if (!isNaN(valor)) {
+                    const conversion = realizarConversion(tipoConversor, unidadOrigen, valor, unidadDestino);
+                    mostrarResultados(conversion, tipoConversor);
+                }
+            }
+
+            function realizarConversion(tipo, origen, valor, destino) {
+                const conversiones = {
+                    distancia: {
+                        'Metros': { 'Kilómetros': valor / 1000, 'Centímetros': valor * 100, 'Pies': valor * 3.28084, 'Pulgadas': valor * 39.3701 },
+                        'Kilómetros': { 'Metros': valor * 1000, 'Centímetros': valor * 100000, 'Pies': valor * 3280.84, 'Pulgadas': valor * 39370.1 },
+                        'Centímetros': { 'Metros': valor / 100, 'Kilómetros': valor / 100000, 'Pies': valor * 0.0328084, 'Pulgadas': valor * 0.393701 },
+                        'Pies': { 'Metros': valor * 0.3048, 'Kilómetros': valor * 0.0003048, 'Centímetros': valor * 30.48, 'Pulgadas': valor * 12 },
+                        'Pulgadas': { 'Metros': valor * 0.0254, 'Kilómetros': valor * 0.0000254, 'Centímetros': valor * 2.54, 'Pies': valor * 0.0833333 }
+                    },
+                    volumen: {
+                        'Metros cúbicos': { 'Litros': valor * 1000, 'Mililitros': valor * 1000000, 'Galones': valor * 264.172, 'Onzas líquidas': valor * 33814 },
+                        'Litros': { 'Metros cúbicos': valor / 1000, 'Mililitros': valor * 1000, 'Galones': valor * 0.264172, 'Onzas líquidas': valor * 33.814 },
+                        'Mililitros': { 'Metros cúbicos': valor / 1000000, 'Litros': valor / 1000, 'Galones': valor * 0.000264172, 'Onzas líquidas': valor * 0.033814 },
+                        'Galones': { 'Metros cúbicos': valor / 264.172, 'Litros': valor * 3.78541, 'Mililitros': valor * 3785.41, 'Onzas líquidas': valor * 128 },
+                        'Onzas líquidas': { 'Metros cúbicos': valor / 33814, 'Litros': valor * 0.0295735, 'Mililitros': valor * 29.5735, 'Galones': valor * 0.0078125 }
+                    },
+                    peso: {
+                        'Kilogramos': { 'Gramos': valor * 1000, 'Libras': valor * 2.20462, 'Onzas': valor * 35.274, 'Toneladas': valor * 0.001 },
+                        'Gramos': { 'Kilogramos': valor / 1000, 'Libras': valor * 0.00220462, 'Onzas': valor * 0.035274, 'Toneladas': valor * 1e-6 },
+                        'Libras': { 'Kilogramos': valor * 0.453592, 'Gramos': valor * 453.592, 'Onzas': valor * 16, 'Toneladas': valor * 0.000453592 },
+                        'Onzas': { 'Kilogramos': valor * 0.0283495, 'Gramos': valor * 28.3495, 'Libras': valor * 0.0625, 'Toneladas': valor * 2.835e-5 },
+                        'Toneladas': { 'Kilogramos': valor * 1000, 'Gramos': valor * 1e6, 'Libras': valor * 2204.62, 'Onzas': valor * 35274 }
+                    },
+                    presion: {
+                        'Pascal': { 'Libra por pulgada cuadrada (PSI)': valor * 0.00014503773773359, 'Bar': valor * 1e-5, 'Torr': valor * 0.00750062 },
+                        'Libra por pulgada cuadrada (PSI)': { 'Pascal': valor * 6894.76, 'Bar': valor * 0.0689476, 'Torr': valor * 51.7149 },
+                        'Bar': { 'Pascal': valor * 100000, 'Libra por pulgada cuadrada (PSI)': valor * 14.5038, 'Torr': valor * 750.062 },
+                        'Torr': { 'Pascal': valor * 133.322, 'Libra por pulgada cuadrada (PSI)': valor * 0.0193368, 'Bar': valor * 0.00133322 }
+                    }
+                };
+
+                return conversiones[tipo][origen][destino];
+            }
+
+            function mostrarResultados(resultado, tipo) {
+                // Usar toFixed solo si hay decimales, de lo contrario, mostrar el número como entero
+                const resultadoFormateado = Number.isInteger(resultado) ? resultado : resultado.toFixed(5);
+
+                const resultadosHTML = `
+                <h3>Resultados (${tipo})</h3>
+                <p>${resultadoFormateado} ${document.getElementById('unidadDestino').value}</p>
+            `;
+
+                document.getElementById('resultados').innerHTML = resultadosHTML;
+            }
+
+            function copiarAlPortapapeles() {
+                const resultados = document.getElementById('resultados').textContent;
+                const textArea = document.createElement('textarea');
+                textArea.value = resultados;
+
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                alert('Resultados copiados al portapapeles');
+            }
+        </script>
+    </body>
+
+</html>

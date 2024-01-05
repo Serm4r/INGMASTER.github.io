@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="../../CSS/repello.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Peso de Acero</title>
+
+</head>
+
+<body>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="../index.html"><i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a></li>
+                    <li><a href="../Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                                aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+                </ul>
+            </li>
+            <li><a href="../SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios</i></a></li>
+           
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../video.html" target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../../JS/navmenu.js"></script>
+
+    <div class="Acero">
+        <h1>Calculadora de Peso de Acero</h1>
+
+        <label for="diametro">Diámetro de la Varilla:</label>
+        <select id="diametro">
+            <option value="0.249">1/4 (6.4 mm)</option>
+            <option value="0.560">3/8 (9.52 mm)</option>
+            <option value="0.994">1/2 (12.7 mm)</option>
+            <option value="1.552">5/8 (15.88 mm)</option>
+            <option value="2.235">3/4 (19.05 mm)</option>
+            <option value="3.042">7/8 (22.22 mm)</option>
+            <option value="3.973">1 (25.4 mm)</option>
+            <option value="5.060">1 1/8 (28.65 mm)</option>
+            <option value="6.404">1 1/4 (32.26 mm)</option>
+            <option value="7.907">1 3/8 (35.81 mm)</option>
+        </select>
+        <label for="cantidadVarillas">Cantidad de Varillas:</label>
+        <input type="number" id="cantidadVarillas" placeholder="Ingresa la cantidad de varillas">
+
+        <label for="longitudVarilla">Longitud de la Varilla (metros):</label>
+        <input type="number" id="longitudVarilla" step="0.01" placeholder="Ingresa la longitud de la varilla en metros">
+
+        <label for="precioCordobas">Precio por Quintal (C$):</label>
+        <input type="number" id="precioCordobas" step="0.01" placeholder="Ingresa el precio por quintal en C$">
+        <label for="cantidadVarillas">Cantidad de Varillas por Quintal:</label>
+        <input type="number" id="VarillasxQuintal" placeholder="Ingrese la cantidad de varillas por quintal">
+
+
+        <h2>Resultados</h2>
+        <div id="resultados"></div>
+
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="copiarResultados()">Copiar Resultados</button>
+    </div>
+    <img src="../../IMG/acero.png" alt="">
+    <script>
+        function calcular() {
+            const cantidadVarillas = parseInt(document.getElementById('cantidadVarillas').value);
+            const longitudVarilla = parseFloat(document.getElementById('longitudVarilla').value);
+            const precioCordobas = parseFloat(document.getElementById('precioCordobas').value);
+            const VarillasxQuintal = parseInt(document.getElementById('VarillasxQuintal').value);
+            const diametro = parseFloat(document.getElementById('diametro').value);
+            const PrecioUnitario = (precioCordobas / VarillasxQuintal)
+            // Cálculos
+            const peso = cantidadVarillas * longitudVarilla * diametro;
+            const costo = cantidadVarillas * PrecioUnitario
+
+            // Mostrar resultados
+            const resultadosHTML = `
+                <p>Peso del Acero: ${peso.toFixed(2)} kg</p>
+                <p>Costo del Acero: C$${costo.toFixed(2)}</p>
+            `;
+
+            document.getElementById('resultados').innerHTML = resultadosHTML;
+        }
+
+        function copiarResultados() {
+            const resultados = document.getElementById('resultados').innerText;
+
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = resultados;
+            document.body.appendChild(tempTextArea);
+
+            tempTextArea.select();
+            document.execCommand('copy');
+
+            document.body.removeChild(tempTextArea);
+
+            alert('Resultados copiados al portapapeles');
+        }
+        // Obtener todos los elementos input
+        const inputs = document.querySelectorAll('input');
+
+        // Agregar un listener de evento a cada input
+        inputs.forEach((input, index) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    // Evitar el comportamiento predeterminado de la tecla Enter (por ejemplo, evitar enviar formularios)
+                    event.preventDefault();
+
+                    // Obtener el siguiente input
+                    const nextInput = inputs[index + 1];
+
+                    // Enfocar el siguiente input si existe
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

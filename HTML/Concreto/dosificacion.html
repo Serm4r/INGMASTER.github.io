@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/StyleMenu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Dosificación de Concreto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: white;
+        }
+
+        h2 {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        a {
+            color: cadetblue;
+        }
+
+        a:hover {
+            color: aqua;
+        }
+
+        h3 {
+            margin-bottom: 250px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        label select {
+            font-weight: bold;
+        }
+
+        input {
+            width: 40%;
+            padding: 8px;
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        option {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #023d8a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgba(0, 255, 255, 0.555);
+        }
+    </style>
+    <a href="https://www.uni.edu.ni/#/" target="_blank">
+        <img src="../../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
+    </a>
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><i class='fas fa-hard-hat' style='font-size:27px'></i>INGMASTER</div>
+        <ul>
+            <li class="active"><a href="../index.html"><i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="../formulario.html"><i class="fa fa-superscript"></i>Formularios</a></li>
+            <li>
+                <a href="#" class="Desing-btn"><i class='fas fa-hard-hat' style='font-size:20px'></i>Concreto
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="Desing-show">
+                    <li><a href="../Concreto/dosificacion.html"><i class="fas fa-calculator"></i>Dosificación</a></li>
+                    <li><a href="../Concreto/volzapata.html"><i class="fas fa-cubes "></i>Volumen Zapata</a></li>
+                    <li><a href="../Concreto/repello.html"><i class="fas fa-building"></i>Repello</a></li>
+                    <li><a href="../Concreto/volumen.html"><i class="fas fa-cube"></i>Volumen Concreto</a></li>
+                    <li><a href="../../Doc/RNC-2007.pdf" target="_blank"><i class="far fa-file-alt"
+                        aria-hidden="true"></i>RNC-2007</a></li>
+                </ul>
+            </li>
+            <li><a href="../cantbloques.html"><i class="fa fa-cubes"></i>Cantidad de bloques</a></li>
+            <li>
+                <a href="#" class="Config-btn"><i class="fa fa-cog fa-spin"></i>Acero
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="Config-show">
+                    <li><a href="../Acero/peso.html"><i class="fa fa-balance-scale" aria-hidden="true"></i>Peso de
+                            acero</a></li>
+                    <li><a href="../Acero/cantidad.html"><i class="fa fa-hashtag" aria-hidden="true"></i>Cantidad de
+                            acero</a></li>
+                    <li><a href="https://la.astm.org/es/standards/astm-standards-list/" target="_blank"><i
+                                class="far fa-file-alt" aria-hidden="true"></i>ASTM</a></li>
+
+                </ul>
+            </li>
+            <li><a href="../SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a></li>
+        
+            <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
+                        Otros Cálculos</i></a></li>
+            <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
+                        Viewer</i></a></li>
+            <li><a href="https://www.sketchup.com/es/plans-and-pricing/sketchup-free" target="_blank"><i
+                        class="fa fa-certificate"> Sketchup</i></a></li>
+            <li><a href="https://www.google.com/intl/es-419/earth/" target="_blank"><i class="fa fa-globe"> Google
+                        Earth</i></a></li>
+            <li><a href="../video.html" target="_blank"><i class="fab fa-youtube"></i>Video Tutoriales</a></li>
+        </ul>
+    </nav>
+    <script src="../../JS/navmenu.js"></script>
+</head>
+
+<body>
+
+    <h2>Calculadora de Dosificación de Concreto</h2>
+    <br>
+    <form id="concreteForm">
+
+        <a href="../Concreto/volumen.html" target="_blank" title="Calcular volumen">Calcular Volumen</a>
+        <label for="cantidadConcreto">Cantidad de Concreto (m³):</label>
+        <input type="number" id="cantidadConcreto" step="0.01" title="Ingresa el Volumen de Concreto" required>
+
+        <label for="preciocemento">Precio bolsa de cemento:</label>
+        <input type="number" id="preciocemento" step="0.01" title="Ingrese precio en córdobas" required>
+
+        <label for="precioarena">Precio de Arena (m³):</label>
+        <input type="number" id="precioarena" step="0.01" title="Ingrese precio en córdobas" required>
+
+        <label for="preciograva">Precio de Grava (m³):</label>
+        <input type="number" id="preciograva" step="0.01" title="Ingrese precio en córdobas" required>
+
+        <label for="proporciones">Proporciones:</label>
+        <select id="proporciones">
+            <option value="420,0.67,0.67" title="(280 Kg/cm2)  4000 PSI - 27 MPA">1:2:2 </option>
+            <option value="380,0.60,0.76" title="(240 Kg/cm2)  3555 PSI - 24 MPA">1:2:2.5 </option>
+            <option value="350,0.55,0.84" title="(226 Kg/cm2)  3224 PSI - 22 MPA">1:2:3 </option>
+            <option value="320,0.52,0.90" title="(210 Kg/cm2)  3000 PSI - 20 MPA">1:2:3.5 </option>
+            <option value="300,0.48,0.95" title="(200 Kg/cm2)  2850 PSI - 19 MPA">1:2:4 </option>
+            <option value="280,0.55,0.89" title="(189 Kg/cm2)  2700 PSI - 18 MPA">1:2.5:4 </option>
+            <option value="300,0.72,0.72" title="(168 Kg/cm2)  2400 PSI - 16 MPA">1:3:3 </option>
+            <option value="260,0.63,0.83" title="(159 Kg/cm2)  2275 PSI - 15 MPA">1:3:4 </option>
+            <option value="230,0.55,0.92" title="(140 Kg/cm2)  2000 PSI - 14 MPA">1:3:5 </option>
+            <option value="210,0.50,1.00" title="(119 Kg/cm2)  1700 PSI - 12 MPA">1:3:6 </option>
+            <option value="175,0.55,0.98" title="(109 Kg/cm2)  1560 PSI - 11 MPA">1:4:7 </option>
+            <option value="160,0.55,1.03" title=" (99 Kg/cm2)  1420 PSI - 10 MPA">1:4:8 </option>
+        </select>
+
+        <br>
+        <!-- Botón para mostrar la imagen -->
+        <button onclick="mostrarImagen()">Mostrar TABLA</button>
+        <button type="button" onclick="calcularDosificacion()">Calcular Dosificación</button>
+        <button onclick="copiarResultados()">Copiar Resultados</button>
+    </form>
+    <br>
+
+    <img id="tablaImagen" src="../../IMG/tablaDosificar.png" alt="Tabla de dosificar">
+
+
+    <!-- Botón para ocultar la imagen -->
+    <button id="ocultarBtn" onclick="ocultarImagen()">Ocultar TABLA</button>
+
+
+    <h3>Resultados</h3>
+    <p id="resultadoDosificacion"></p>
+    <br>
+
+
+    <script>
+        function mostrarImagen() {
+            event.preventDefault();
+            // Mostrar la imagen
+            document.getElementById('tablaImagen').style.display = 'block';
+            // Mostrar el botón de ocultar
+            document.getElementById('ocultarBtn').style.display = 'inline';
+
+        }
+
+        function ocultarImagen() {
+            // Ocultar la imagen
+            document.getElementById('tablaImagen').style.display = 'none';
+            // Ocultar el botón de ocultar
+            document.getElementById('ocultarBtn').style.display = 'none';
+
+        }
+        function calcularDosificacion() {
+            // Obtener los valores del formulario
+            const cantidadConcreto = parseFloat(document.getElementById("cantidadConcreto").value);
+            const preciocemento = parseFloat(document.getElementById("preciocemento").value);
+            const precioarena = parseFloat(document.getElementById("precioarena").value);
+            const preciograva = parseFloat(document.getElementById("preciograva").value);
+
+            const proporcionesSeleccionadas = obtenerProporcionesSeleccionadas();
+
+            // Extraer los valores directamente de la proporción seleccionada
+            const kilosCemento = proporcionesSeleccionadas.kilosCemento;
+            const proporcionArena = proporcionesSeleccionadas.proporcionArena;
+            const proporcionGrava = proporcionesSeleccionadas.proporcionGrava;
+
+            const resistenciaConcreto = document.getElementById("proporciones").options[document.getElementById("proporciones").selectedIndex].title;
+
+            const cantidadCemento = kilosCemento * cantidadConcreto;
+            const bolsasCemento = Math.ceil(cantidadCemento / 42.5);
+            const preciobolsas = bolsasCemento * preciocemento
+            const precioArena = precioarena * proporcionArena
+            const precioGrava = preciograva * proporcionGrava
+            const total = preciobolsas + precioArena + precioGrava;
+            const aguaMin = cantidadConcreto * 200; // Se recomienda 200 litros de agua por metro cúbico de concreto
+
+
+            // Densidad típica de la arena y grava (en kg/m^3)
+            const densidadArena = 1600;
+            const densidadGrava = 1800;
+
+            // Calcular el peso de la arena y la grava (en kg)
+            const pesoArena = proporcionArena * cantidadConcreto * densidadArena;
+            const pesoGrava = proporcionGrava * cantidadConcreto * densidadGrava;
+
+
+            const resultadoDosificacion = `
+                Resistencia del Concreto: ${resistenciaConcreto}<br>    
+                Cantidad de Cemento: ${cantidadCemento.toFixed(2)} kg<br>
+                Proporción de Arena: ${proporcionArena.toFixed(2) * cantidadConcreto}m³ - ${pesoArena.toFixed(2)} kg<br>
+                Proporción de Grava: ${proporcionGrava.toFixed(2) * cantidadConcreto}m³ - ${pesoGrava.toFixed(2)} kg<br>
+                Bolsas de Cemento (42.5 kg): ${bolsasCemento} bolsas<br>
+                Costo de Cemento: C$${preciobolsas.toFixed(2)}<br>
+                Costo de Arena: C$${precioArena.toFixed(2)}<br>
+                Costo de Grava: C$${precioGrava.toFixed(2)}<br>
+                Agua: Entre ${aguaMin.toFixed(2)} y ${(aguaMin * 1.2).toFixed(2)} litros <br>
+                Total: C$ ${total.toFixed(2)}<br>
+                `;
+
+            document.getElementById("resultadoDosificacion").innerHTML = resultadoDosificacion;
+        }
+
+        function obtenerProporcionesSeleccionadas() {
+            // Obtener el elemento select
+            const selectElement = document.getElementById("proporciones");
+
+            // Obtener la opción seleccionada
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+
+            // Obtener el valor de la opción
+            const valores = selectedOption.value.split(",");
+
+            // Convertir los valores a números
+            const kilosCemento = parseFloat(valores[0]);
+            const proporcionArena = parseFloat(valores[1]);
+            const proporcionGrava = parseFloat(valores[2]);
+
+            // Devolver un objeto con las proporciones
+            return {
+                kilosCemento,
+                proporcionArena,
+                proporcionGrava
+            };
+        }
+
+        function copiarResultados() {
+            const resultadosTexto = document.getElementById('resultadoDosificacion').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = resultadosTexto;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Resultados copiados al portapapeles.');
+
+            // Prevenir la acción predeterminada del formulario (evitar el recargado de la página)
+            event.preventDefault();
+        }
+
+
+        const inputs = document.querySelectorAll('input');
+
+        inputs.forEach((input, index) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const nextInput = inputs[index + 1];
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
