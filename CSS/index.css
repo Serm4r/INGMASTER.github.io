@@ -219,6 +219,11 @@ body {
     /* Color del texto */
 }
 
+.presentar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 
