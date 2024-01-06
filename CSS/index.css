@@ -227,20 +227,20 @@ body {
 /* Estilos específicos para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
 @media screen and (max-width: 768px) {
     .presentar .content-header {
-        font-size: 9px; /* Ajusta según tus necesidades para dispositivos móviles */
-        margin-top: 50px; /* Ajusta según tus necesidades para dispositivos móviles */
+        font-size: 2%; /* Ajusta según tus necesidades para dispositivos móviles */
+        margin-top: 2%; /* Ajusta según tus necesidades para dispositivos móviles */
         margin-bottom: 5%; /* Ajusta según tus necesidades para dispositivos móviles */
         
     }
   
     .presentar .content-text {
-        font-size: 5px; /* Ajusta según tus necesidades para dispositivos móviles */
-        margin-top: 5px; /* Ajusta según tus necesidades para dispositivos móviles */
-        border-radius: 15px; /* Ajusta según tus necesidades para dispositivos móviles */
+        font-size: 1%; /* Ajusta según tus necesidades para dispositivos móviles */
+        margin-top: 1%; /* Ajusta según tus necesidades para dispositivos móviles */
+        border-radius: 2%; /* Ajusta según tus necesidades para dispositivos móviles */
     }
 
     .item .name {
-        font-size: 14px; /* Utilizamos porcentajes para el tamaño del texto */
+        font-size: 2%; /* Utilizamos porcentajes para el tamaño del texto */
         font-weight: bold;
         color: white;
         text-shadow: 0 0 1.5% rgba(12, 178, 255, 1); /* Utilizamos porcentajes para el desenfoque */
@@ -251,7 +251,7 @@ body {
     .item .des {
         margin: 1.5% 0; /* Utilizamos porcentajes para el margen */
         opacity: 0;
-        font-size: 9px; /* Utilizamos porcentajes para el tamaño del texto */
+        font-size: 1%; /* Utilizamos porcentajes para el tamaño del texto */
         font-weight: bold;
         color: white;
         text-shadow: 0 0 1.5% rgb(0, 0, 0); /* Utilizamos porcentajes para el desenfoque */
