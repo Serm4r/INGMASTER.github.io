@@ -1,6 +1,12 @@
 body {
     background-color: #eaeaea;
     overflow: hidden;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Esto asegura que el cuerpo ocupe al menos toda la altura de la ventana gráfica */
+    margin: 0; /* Elimina los márgenes predeterminados del cuerpo para evitar desplazamientos innecesarios */
+
 }
 body {
     height: 100vh;
