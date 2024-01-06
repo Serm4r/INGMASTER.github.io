@@ -224,7 +224,66 @@ body {
   align-items: center;
   justify-content: center;
 }
+/* Estilos específicos para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+@media screen and (max-width: 768px) {
+    .presentar .content-header {
+        font-size: 9px; /* Ajusta según tus necesidades para dispositivos móviles */
+        margin-top: 50px; /* Ajusta según tus necesidades para dispositivos móviles */
+        margin-bottom: 5%; /* Ajusta según tus necesidades para dispositivos móviles */
+        
+    }
+  
+    .presentar .content-text {
+        font-size: 5px; /* Ajusta según tus necesidades para dispositivos móviles */
+        margin-top: 5px; /* Ajusta según tus necesidades para dispositivos móviles */
+        border-radius: 15px; /* Ajusta según tus necesidades para dispositivos móviles */
+    }
 
+    .item .name {
+        font-size: 14px; /* Utilizamos porcentajes para el tamaño del texto */
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 1.5% rgba(12, 178, 255, 1); /* Utilizamos porcentajes para el desenfoque */
+        opacity: 0;
+        animation: showcontent 1s ease-in-out 1 forwards;
+    }
+    
+    .item .des {
+        margin: 1.5% 0; /* Utilizamos porcentajes para el margen */
+        opacity: 0;
+        font-size: 9px; /* Utilizamos porcentajes para el tamaño del texto */
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 1.5% rgb(0, 0, 0); /* Utilizamos porcentajes para el desenfoque */
+        animation: showcontent 1s ease-in-out 0.3s 1 forwards;
+    }
+    .item {
+        width: 20%; /* Utilizamos porcentajes para el ancho de los elementos */
+        height: 40%; /* Utilizamos porcentajes para la altura de los elementos */
+        background-position: 50% 50%;
+        display: inline-block;
+        transition: 0.5s;
+        background-size: cover;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        transform: translate(0, -50%);
+        border-radius: 2%; /* Utilizamos porcentajes para el radio de borde */
+        box-shadow: 0 3% 5% #505050; /* Utilizamos porcentajes para la sombra */
+    }
+    .container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%; /* Utilizamos porcentajes para el ancho del contenedor */
+        max-width: 1200px; /* Utilizamos porcentajes para el ancho máximo del contenedor */
+        height: 50%; /* Utilizamos porcentajes para la altura del contenedor */
+        padding: 5%; /* Utilizamos porcentajes para el relleno del contenedor */
+        background-color: #001636;
+        box-shadow: 0 3% 5% #dbdbdb; /* Utilizamos porcentajes para la sombra */
+    }
+}
 
 
 
