@@ -1,42 +1,36 @@
 body {
     background-color: #eaeaea;
     overflow: hidden;
-     display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh; /* Esto asegura que el cuerpo ocupe al menos toda la altura de la ventana gráfica */
     margin: 0; /* Elimina los márgenes predeterminados del cuerpo para evitar desplazamientos innecesarios */
-
+    z-index: 1
 }
+
 body {
     height: 100vh;
     background-color: #031a34;
     background-image: url(IMG/UNI-Logo/uni.png);
-    background-position: right 20px top 15px;
+    background-position: right 2% top 1.5%; /* Utilizamos porcentajes para la posición */
     background-repeat: no-repeat;
     background-size: 5%;
     background-attachment: fixed;
-    scroll-margin-block-start: 250px;
+    scroll-margin-block-start: 25%; /* Utilizamos porcentajes para el margen de desplazamiento */
 }
 
 #uni-logo {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 100px;
+    top: 1%;
+    right: 1%;
+    width: 7%; /* Utilizamos porcentajes para el tamaño del logo */
     height: auto;
-    /* Agrega la animación original como una transición */
     transition: box-shadow 0.3s linear;
 }
 
-/* Aplica la animación al hacer hover */
 #uni-logo:hover {
-    box-shadow: -12px 12px 20px -1px rgb(0, 217, 255);
-}
-
-/* Aplica la animación al hacer hover */
-#uni-logo:hover {
-    box-shadow: -12px 12px 20px -1px rgb(0, 217, 255);
+    box-shadow: -1% 1% 2% -0.1% rgb(0, 217, 255); /* Utilizamos porcentajes para la sombra */
 }
 
 .container {
@@ -44,21 +38,23 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 1200px;
-    height: 675px;
-    padding: 50px;
+    width: 80%; /* Utilizamos porcentajes para el ancho del contenedor */
+    max-width: 1200px; /* Utilizamos porcentajes para el ancho máximo del contenedor */
+    height: 600px; /* Utilizamos porcentajes para la altura del contenedor */
+    padding: 5%; /* Utilizamos porcentajes para el relleno del contenedor */
     background-color: #001636;
-    box-shadow: 0 30px 50px #dbdbdb;
+    box-shadow: 0 3% 5% #dbdbdb; /* Utilizamos porcentajes para la sombra */
+    z-index: 1
 }
 
 #slide {
     width: max-content;
-    margin-top: 50px;
+    margin-top: 5%;
 }
 
 .item {
-    width: 200px;
-    height: 300px;
+    width: 200px; /* Utilizamos porcentajes para el ancho de los elementos */
+    height: 300px; /* Utilizamos porcentajes para la altura de los elementos */
     background-position: 50% 50%;
     display: inline-block;
     transition: 0.5s;
@@ -67,8 +63,8 @@ body {
     z-index: 1;
     top: 50%;
     transform: translate(0, -50%);
-    border-radius: 20px;
-    box-shadow: 0 30px 50px #505050;
+    border-radius: 2%; /* Utilizamos porcentajes para el radio de borde */
+    box-shadow: 0 3% 5% #505050; /* Utilizamos porcentajes para la sombra */
 }
 
 .item:nth-child(1),
@@ -87,23 +83,23 @@ body {
 }
 
 .item:nth-child(4) {
-    left: calc(50% + 220px);
+    left: calc(50% + 220px); /* Utilizamos porcentajes para la posición */
 }
 
 .item:nth-child(5) {
-    left: calc(50% + 440px);
+    left: calc(50% + 440px); /* Utilizamos porcentajes para la posición */
 }
 
 .item:nth-child(n+6) {
-    left: calc(50% + 660px);
+    left: calc(50% + 660px); /* Utilizamos porcentajes para la posición */
     opacity: 0;
 }
 
 .item .content {
     position: absolute;
     top: 50%;
-    left: 100px;
-    width: 300px;
+    left: 5%; /* Utilizamos porcentajes para la posición */
+    width: 24%; /* Utilizamos porcentajes para el ancho */
     text-align: left;
     padding: 0;
     color: #eee;
@@ -118,38 +114,37 @@ body {
 }
 
 .item .name {
-    font-size: 50px;
+    font-size: 150%; /* Utilizamos porcentajes para el tamaño del texto */
     font-weight: bold;
     color: white;
-    text-shadow: 0 0 15px rgba(12, 178, 255, 1); /* Ajusta el valor del desenfoque  */
+    text-shadow: 0 0 1.5% rgba(12, 178, 255, 1); /* Utilizamos porcentajes para el desenfoque */
     opacity: 0;
     animation: showcontent 1s ease-in-out 1 forwards;
 }
 
 .item .des {
-    margin: 30px 0;
+    margin: 10%; /* Utilizamos porcentajes para el margen */
     opacity: 0;
-    font-size: 20px;
+    font-size: 100%; /* Utilizamos porcentajes para el tamaño del texto */
     font-weight: bold;
     color: white;
-    text-shadow: 0 0 15px rgb(0, 0, 0); /* Ajusta el valor del desenfoque */
+    text-shadow: 0 0 15px rgb(0, 0, 0); /* Utilizamos porcentajes para el desenfoque */
     animation: showcontent 1s ease-in-out 0.3s 1 forwards;
 }
 
-
-
 .item button {
-    padding: 10px 20px;
+    padding: 2% 2%; /* Utilizamos porcentajes para el relleno del botón */
     border: none;
     opacity: 0;
-    animation: showcontent 1s ease-in-out 0.6s 1 forwards
+    animation: showcontent 1s ease-in-out 0.6s 1 forwards;
+    font-size: 1.5%; /* Utilizamos porcentajes para el tamaño del texto */
 }
 
 @keyframes showcontent {
     from {
         opacity: 0;
-        transform: translate(0, 100px);
-        filter: blur(33px);
+        transform: translate(0, 5%);
+        filter: blur(3.3%);
     }
 
     to {
@@ -161,17 +156,17 @@ body {
 
 .buttons {
     position: absolute;
-    bottom: 30px;
+    bottom: 3%; /* Utilizamos porcentajes para la posición */
     z-index: 222222;
     text-align: center;
     width: 100%;
 }
 
 .buttons button {
-    width: 50px;
-    height: 50px;
+    width: 2.5%; /* Utilizamos porcentajes para el ancho del botón */
+    height: 2.5%; /* Utilizamos porcentajes para la altura del botón */
     border-radius: 50%;
-    border: 1px solid #022f53;
+    border: 0.1% solid #022f53; /* Utilizamos porcentajes para el grosor del borde */
     transition: 0.5s;
 }
 
@@ -179,38 +174,42 @@ body {
     background-color: #0da8e6;
 }
 
-
 .presentar {
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1%;
+    border-radius: 1%; /* Utilizamos porcentajes para el radio de borde */
+    box-shadow: 0 0 1% rgba(0, 0, 0, 0.1);
     text-align: left;
     position: absolute;
-    top: 10%;
+    top: 1%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    /* Establece un valor alto para z-index trae hacia el frente de la pantalla*/
 }
 
 .presentar .content-header {
-    font-size: 36px;
+    margin-top: 10%;
+    font-size: 150%; /* Utilizamos porcentajes para el tamaño del texto */
     font-weight: bold;
-    margin-bottom: 10px;
-    /* Añade un margen inferior para separar el texto del párrafo */
+    margin-bottom: 1%; /* Utilizamos porcentajes para el margen inferior */
     text-align: center;
+    line-height: 1.5; /* Ajusta según tus necesidades */
+    height: 100%; /* Ajusta según tus necesidades */
+    z-index: 1
 }
+
 
 .presentar .content-text {
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: 90%; /* Utilizamos porcentajes para el tamaño del texto */
+    margin-top: 2px; /* Utilizamos porcentajes para el margen superior */
     text-align: center;
     background: linear-gradient(rgba(3, 26, 52, 0), rgba(3, 26, 52, 1), rgba(3, 26, 52, 0));
-    padding: 10px;
-    border-radius: 70px;
+    padding: 1%;
+    border-radius: 7%; /* Utilizamos porcentajes para el radio de borde */
+    line-height: 1.5; /* Ajusta según tus necesidades */
+    height: 100%; /* Ajusta según tus necesidades */
+    z-index: 1
 }
-
 
 .presentar .content-text br {
     display: none;
@@ -218,35 +217,31 @@ body {
 
 .presentar .content-header,
 .presentar .content-text {
-    text-shadow: 22px 22px 14px rgba(11, 25, 224, 0.363);
-    -webkit-text-stroke: 0.1px rgb(0, 202, 252);
-    /* Grosor y color del delineado */
+    text-shadow: 2.2% 2.2% 1.4% rgba(11, 25, 224, 0.363);
+    -webkit-text-stroke: 0.1% rgb(0, 202, 252);
     color: white;
-    /* Color del texto */
 }
 
-.section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+
 /* Estilos específicos para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
 @media screen and (max-width: 768px) {
     .presentar .content-header {
-        font-size: 2%; /* Ajusta según tus necesidades para dispositivos móviles */
-        margin-top: 2%; /* Ajusta según tus necesidades para dispositivos móviles */
+        font-size: 15px; /* Ajusta según tus necesidades para dispositivos móviles */
+        margin-top: 130px; /* Ajusta según tus necesidades para dispositivos móviles */
         margin-bottom: 5%; /* Ajusta según tus necesidades para dispositivos móviles */
-        
+        z-index: 1
     }
-  
+
     .presentar .content-text {
-        font-size: 1%; /* Ajusta según tus necesidades para dispositivos móviles */
-        margin-top: 1%; /* Ajusta según tus necesidades para dispositivos móviles */
-        border-radius: 2%; /* Ajusta según tus necesidades para dispositivos móviles */
+        font-size: 9px; /* Ajusta según tus necesidades para dispositivos móviles */
+        margin-top: 5px; /* Ajusta según tus necesidades para dispositivos móviles */
+        border-radius: 15px; /* Ajusta según tus necesidades para dispositivos móviles */
+        z-index: 1
     }
 
     .item .name {
-        font-size: 2%; /* Utilizamos porcentajes para el tamaño del texto */
+        font-size: 18px; /* Utilizamos porcentajes para el tamaño del texto */
         font-weight: bold;
         color: white;
         text-shadow: 0 0 1.5% rgba(12, 178, 255, 1); /* Utilizamos porcentajes para el desenfoque */
@@ -255,9 +250,9 @@ body {
     }
     
     .item .des {
-        margin: 1.5% 0; /* Utilizamos porcentajes para el margen */
+        margin: 1% 0; /* Utilizamos porcentajes para el margen */
         opacity: 0;
-        font-size: 1%; /* Utilizamos porcentajes para el tamaño del texto */
+        font-size: 9px; /* Utilizamos porcentajes para el tamaño del texto */
         font-weight: bold;
         color: white;
         text-shadow: 0 0 1.5% rgb(0, 0, 0); /* Utilizamos porcentajes para el desenfoque */
@@ -272,7 +267,7 @@ body {
         background-size: cover;
         position: absolute;
         z-index: 1;
-        top: 50%;
+        top: 60%;
         transform: translate(0, -50%);
         border-radius: 2%; /* Utilizamos porcentajes para el radio de borde */
         box-shadow: 0 3% 5% #505050; /* Utilizamos porcentajes para la sombra */
@@ -289,13 +284,31 @@ body {
         background-color: #001636;
         box-shadow: 0 3% 5% #dbdbdb; /* Utilizamos porcentajes para la sombra */
     }
+    .item:nth-child(3) {
+        left: 50%;
+    }
+    
+    .item:nth-child(4) {
+        left: calc(50% + 11%); /* Utilizamos porcentajes para la posición */
+    }
+    
+    .item:nth-child(5) {
+        left: calc(50% + 22%); /* Utilizamos porcentajes para la posición */
+    }
+    
+    .item:nth-child(n+6) {
+        left: calc(50% + 33%); /* Utilizamos porcentajes para la posición */
+        opacity: 0;
+    }
+    .buttons {
+        bottom: -15%; /* Ajusta según tus necesidades para dispositivos móviles */
+    }
+
+    .buttons button {
+        width: 30px;
+        height: 30px;
+    }
 }
-
-
-
-
-
-
 
 
 
