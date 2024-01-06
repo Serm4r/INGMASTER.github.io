@@ -10,6 +10,7 @@
   font-family:  Arial, Helvetica, sans-serif;
 }
 
+
 /* Estilos de botón */
 .btn {
   position: absolute;
@@ -66,6 +67,7 @@
 /* Estilos de la barra lateral visible */
 .sidebar.show {
   left: 0px;
+  z-index: 2;
 }
 
 /* Estilos de icono en los elementos de la barra lateral */
@@ -276,4 +278,34 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+}
+
+
+
+.move-body {
+  position: fixed;
+  overflow: hidden;
+  width: 100%; /* Asegura que el cuerpo ocupe toda la pantalla cuando esté desplazado */
+}
+
+.sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  left: -250px;
+  background: #063146;
+  transition: left 0.4s ease;
+  z-index: 1; /* Asegura que la barra lateral esté sobre el contenido principal cuando esté visible */
+}
+
+.sidebar.show {
+  left: 0;
+}
+
+.content {
+  transition: margin-left 0.4s ease; /* Agrega transición para el desplazamiento lateral */
+}
+
+.move-body .content {
+  margin-left: 250px; /* Ajusta el valor según el ancho de tu barra lateral */
 }
