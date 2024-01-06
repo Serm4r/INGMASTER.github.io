@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 
-h1  {
-  color: #fff;  /* Color del texto */
+h1 {
+  color: white;  /* Color del texto */
   text-align: center;  /* Centra el texto horizontalmente */
   margin-top: 50px;  /* Espacio superior al título */
   font-size: 2em;  /* Tamaño del texto (ajusta según sea necesario) */
