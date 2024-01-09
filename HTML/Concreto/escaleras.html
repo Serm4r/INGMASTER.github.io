@@ -98,18 +98,17 @@
             const anchoPaso = parseFloat(document.getElementById("anchoPaso").value) / 100; // Convertir a metros
             const altoEscalon = parseFloat(document.getElementById("altoEscalon").value) / 100; // Convertir a metros
 
-            // Calcular la cantidad de escalones
+                 // Calcular la cantidad de escalones
             const cantidadEscalones = Math.ceil(alturaEscalera / altoEscalon);
             
                // Calcular el volumen de los escalones
-    const volumenEscalones = (cantidadEscalones) * anchoEscalera * anchoPaso * altoEscalon;
-    const volumenEscalon= anchoEscalera * anchoPaso * altoEscalon ;
+    const volumenEscalones = (alturaEscalera / altoEscalon) * anchoEscalera * anchoPaso * altoEscalon;
 
 // Calcular el volumen de la base
    const volumenCubo= longitudEscalera * anchoEscalera * alturaEscalera;
 
     // Calcular el volumen total
-    const volumenTotal = volumenEscalon + (volumenCubo - volumenEscalones - volumenEscalon);
+        const volumenTotal = volumenCubo - volumenEscalones ;
 
     // Mostrar el resultado
     document.getElementById("resultado").textContent = `Volumen de la Escalera: ${volumenTotal.toFixed(3)} metros cúbicos (${cantidadEscalones} escalones)`;
