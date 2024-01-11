@@ -152,16 +152,16 @@
 
             // Calcular la cantidad de varillas necesarias
             const cantidadVarillas = Math.ceil(longitudTotal / largoVarilla) * elementos;
-            const pata = diametroVarilla * 4;
+            
             // Calcular la cantidad de estribos
-            const estriboCubierto = ((ancho + alto) * 2) - 10 + pata;
+            const estriboCubierto = ((ancho + alto) * 2) + 6 ; // -6 es teniendo en cuenta que se deja 1.5cm de recubrimiento por cada lado de la viga o columna y + 12cm de pata, osea 6cm de cada pata de estribo -6+12=+6
             const longitudEstribos = Math.ceil(longitudTotal / distanciaEstribos) * estriboCubierto;
             const cantidadEstribos = Math.ceil(longitudEstribos / largoVarilla);
 
             // Calcular la cantidad de alambre de amarre
             const cantidadAmarres = elementos * cantidad;
             const metrosAmarreTotal = distanciaAmarre * cantidadAmarres;
-            const librasAmarreTotal = Math.ceil(metrosAmarreTotal / 27.5); // Suponiendo que 1 libra tiene 27.5 metros
+            const librasAmarreTotal = Math.ceil(metrosAmarreTotal / 46.73); // calculamos que en una libra hay 46.73 metros de alambre de amarre
 
             // Mostrar resultados
             const resultadosHTML = `
