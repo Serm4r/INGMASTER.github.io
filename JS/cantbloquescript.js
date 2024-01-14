@@ -86,13 +86,12 @@ function calcularCantidad() {
     volumenmortero = cantidadParedes * (volumenpared - (cantidad * volumenBloque));
   }
 
-
   const valorSeleccionado = selectProporcionJunta.value;
   const valores = valorSeleccionado.split(",");
   const proporcionCemento = parseFloat(valores[0]);
   const proporcionArena = parseFloat(valores[1]);
 
-  const volumenCemento = Math.ceil(volumenmortero * (proporcionCemento / 42.5)); //tomando en cuenta que las bolsas de cemento son de 42.5kg 
+  const volumenCemento = Math.ceil(volumenmortero * (proporcionCemento / 42.5) + 1.5); //tomando en cuenta que las bolsas de cemento son de 42.5kg 
   const volumenArena = volumenmortero * proporcionArena ;
   // Calcular el precio del cemento y arena
   const precioCementoTotal = Math.ceil(volumenCemento) * precioCemento; // Redondea hacia arriba
