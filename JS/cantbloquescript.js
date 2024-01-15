@@ -120,7 +120,8 @@ const bloquestotales= cantidadBloques*cantidadParedes
   context.fillStyle = "cyan";
 
   // Dibuja el contorno del rectángulo escalado
-  context.strokeRect(10, 350 , anchoPared * 50, altoPared * 50);
+  
+context.strokeRect(10, 350 , anchoPared * 50, altoPared * 50);
 
 // Dibuja el triángulo encima del rectángulo
 context.beginPath();
@@ -140,6 +141,7 @@ context.fill();
   context.font = "20px Arial"; // Estilo del texto
   context.fillText(areaText, x, y);
 }
+
 
 // Llama a la función calcularCantidad() al cargar la página y cada vez que se modifiquen los campos de entrada
 document.addEventListener("DOMContentLoaded", function () {
@@ -218,7 +220,6 @@ function copiarResultados() {
 document
   .getElementById("copiarResultados")
   .addEventListener("click", copiarResultados);
-
 
 
 
