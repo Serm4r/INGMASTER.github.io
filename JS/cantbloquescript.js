@@ -120,21 +120,22 @@ const bloquestotales= cantidadBloques*cantidadParedes
   context.fillStyle = "cyan";
 
   // Dibuja el contorno del rectángulo escalado
-  context.strokeRect(10, 10, anchoPared * 50, altoPared * 50);
+  context.strokeRect(10, 350 , anchoPared * 50, altoPared * 50);
 
-  // Dibuja el triángulo encima del rectángulo
-  context.beginPath();
-  context.moveTo(10, 10);  // Punto superior izquierdo del rectángulo
-  context.lineTo(10 + anchoPared * 50, 10);  // Punto superior derecho del rectángulo
-  context.lineTo(10 + anchoPared * 25, 10 - alturaTecho * 50);  // Punto superior del triángulo
-  context.closePath();
-  context.fill();
+// Dibuja el triángulo encima del rectángulo
+context.beginPath();
+context.moveTo(10, 350);  // Punto superior izquierdo del rectángulo
+context.lineTo(10 + anchoPared * 50, 350);  // Punto superior derecho del rectángulo
+context.lineTo(10 + anchoPared * 25, 350 - alturaTecho * 50);  // Punto inferior del triángulo
+context.closePath();
+context.fill();
 
   // Dibuja el texto del área con "m²" como exponente centrado en el rectángulo
   const areaText = `Área: ${areaPared.toFixed(2)} m²`;
   const textWidth = context.measureText(areaText).width; // Obtiene el ancho del texto
+  
   const x = 10 + (anchoPared * 50 - textWidth) / 2; // Calcula la coordenada x centrada
-  const y = 10 + (altoPared * 50 + 20) / 2; // Calcula la coordenada y centrada
+  const y = 350 + (altoPared * 50 ) /2; // Calcula la coordenada y centrada
 
   context.font = "20px Arial"; // Estilo del texto
   context.fillText(areaText, x, y);
