@@ -98,13 +98,13 @@ function calcularCantidad() {
   const precioArenaTotal =  Math.ceil(volumenArena * precioArena);
 
   // Calcular el precio total
-  const precioTotal = cantidad * precioBloque + precioCementoTotal + precioArenaTotal;
+  const precioTotal = cantidadBloques * precioBloque + precioCementoTotal + precioArenaTotal;
 const bloquestotales= cantidadBloques*cantidadParedes
   // Actualizar los resultados en el HTML
 
   document.getElementById("cantidadResultado").textContent = bloquestotales; //cantidad de bloques
   document.getElementById("cantidadCemento").textContent = (volumenCemento) + " bolsas"; // Redondear hacia arriba la cantidad de bolsas de cemento
-  document.getElementById("preciobloque").textContent = "C$ " + precioBloque * cantidad.toFixed(2);
+  document.getElementById("preciobloque").textContent = "C$ " + precioBloque * cantidadBloques.toFixed(2);
   document.getElementById("cantidadArena").textContent = volumenArena.toFixed(2) + " metros cúbicos";
   document.getElementById("preciocemento").textContent = "C$" + precioCementoTotal.toFixed(2);
   document.getElementById("precioarena").textContent = "C$" + precioArenaTotal.toFixed(2);
