@@ -155,7 +155,7 @@
             const cantidadVarillas = Math.ceil(longitudTotal / largoVarilla) * elementos;
             
             // Calcular la cantidad de estribos
-            const estriboCubierto = ((ancho + alto) * 2) + 10 ; // -6 es teniendo en cuenta que se deja 1.5cm de recubrimiento por cada lado de la viga o columna y + 12cm de pata, osea 6cm de cada pata de estribo -6+12=+6
+            const estriboCubierto = ((ancho + alto) * 2) + 6 ; // -6 es teniendo en cuenta que se deja 1.5cm de recubrimiento por cada lado de la viga o columna y + 12cm de pata, osea 6cm de cada pata de estribo -6+12=+6
             const longitudEstribos = Math.ceil(longitudTotal / distanciaEstribos) * estriboCubierto;
             const cantidadEstribos = Math.ceil( largoVarilla/longitudEstribos);
 
