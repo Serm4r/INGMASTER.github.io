@@ -186,11 +186,12 @@ function copiarResultados() {
   const preciocemento = document.getElementById("preciocemento").textContent;
   const precioarena = document.getElementById("precioarena").textContent;
   const precioTotal = document.getElementById("precioTotal").textContent;
-
+  const cantidadParedes = parseFloat(document.getElementById("cantidadParedes").value) || 1;
+  
   // Une los resultados en un formato legible
   const resultadosTexto = `
     Pared: ${nombrePared}
-    Área de la Pared: ${area} m²
+    Área de la Pared: ${area*cantidadParedes} m²
     Cantidad de Bloques: ${cantidadResultado}
     Cantidad de Cemento: ${cantidadCemento}
     Cantidad de Arena: ${cantidadArena}
