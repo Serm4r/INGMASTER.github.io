@@ -15,8 +15,6 @@
     <a href="https://www.uni.edu.ni/#/" target="_blank">
         <img src="../IMG/UNI-Logo/uni.png" alt="Logo de la Universidad" id="uni-logo">
     </a>
-
-    
     <div class="btn">
         <span class="fas fa-bars"></span>
     </div>
@@ -55,8 +53,9 @@
 
                 </ul>
             </li>
-            <li><a href="../HTML/SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a></li>
-            
+            <li><a href="../HTML/SUMATORIA.html" target="_blank"><i class="fas fa-cash-register"> Sumar Precios </i></a>
+            </li>
+
             <li><a href="https://www.civil-engineering-calculators.com/" target="_blank"><i class="fas fa-calculator">
                         Otros Cálculos</i></a></li>
             <li><a href="https://viewer.autodesk.com/" target="_blank"><i class="fa fa-certificate"> Autodesk
@@ -71,86 +70,131 @@
     <script src="../JS/navmenu.js"></script>
 
     <h1>SUMATORIA DE PRECIOS</h1> <br>
-    <textarea id="texto" rows="10" cols="50" title="
-    INGRESE COSTOS DE MATERIALES. Esta suma se realiza únicamente para materiales en un formato específico (al copiar los resultados en los diferentes módulos de INGMASTER) "></textarea><br>
+    <textarea id="texto" rows="10" cols="50"
+        title="INGRESE COSTOS DE MATERIALES. Esta suma se realiza únicamente para materiales en un formato específico (al copiar los resultados en los diferentes módulos de INGMASTER) "></textarea><br>
     <button onclick="sumarPrecios()">Sumar Precios</button>
-    <button onclick="copiarResultados()">Copiar Resultados</button>
+
+    <button onclick="copiarContenido()">Copiar Contenido</button>
+
+    <button id="botonMostrar" onclick="mostrarResultados()">Mostrar Resultados</button>
+
+    <div id="resultados"></div>
 
 </body>
+
 <script>
     function sumarPrecios() {
-        // Obtener el contenido del textarea
-        const texto = document.getElementById('texto').value;
+    let costoTotalCemento = 0;
+    let costoTotalArena = 0;
+    let costoTotalGrava = 0;
+    let costoTotalArenilla = 0;
+    let costoTotalAcero = 0;
+    let costoTotalAlambre = 0;
+    let costoTotal =0;
+        
+        const texto = document.getElementById('texto').value.trim();
 
-        // Dividir el texto en líneas
-        const lineas = texto.split('\n');
+        if (texto === '') {
+            alert("El cuadro de texto está vacío. Por favor, ingrese los datos de costos de materiales.");
+        } else {
+            const lineas = texto.split('\n');
 
-        // Inicializar variables para precios y costos totales
-        let precioCemento = 0;
-        let costoTotalCemento = 0;
-        let costoTotalAcero = 0;
-        let precioArena = 0;
-        let costoTotalArena = 0;
-        let precioGrava = 0;
-        let costoTotalGrava = 0;
-        let precioArenilla = 0; // Nuevo costo de Arenilla
-        let costoTotalArenilla = 0; // Nuevo costo total de Arenilla
-        let precioAcero = 0;
-
-        // Recorrer cada línea
-        lineas.forEach((linea) => {
-            // Buscar coincidencias con los elementos específicos
-            if (linea.includes("Costo de Cemento")) {
-                // Extraer el precio de la línea
-                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
-                // Sumar al total de cemento
-                precioCemento += precio;
-            } else if (linea.includes("Costo de Arena")) {
-                // Extraer el precio de la línea
-                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
-                // Sumar al total de arena
-                precioArena += precio;
-            } else if (linea.includes("Costo de Grava")) {
-                // Extraer el precio de la línea
-                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
-                // Sumar al total de grava
-                precioGrava += precio;
-            } else if (linea.includes("Costo de Arenilla")) {
-                // Extraer el precio de la línea para Arenilla
-                const precio = parseFloat(linea.match(/C\$(\d+\.\d+)/)[1]);
-                // Sumar al total de Arenilla
-                precioArenilla += precio;
-            } else if (linea.includes("Costo del Acero")) {
-                // Extraer el precio de la línea
-                const precios = linea.match(/C\$(\d+\.\d+)/g);
-
-                // Sumar al total de acero por cada ocurrencia
-                if (precios) {
-                    precios.forEach((precio) => {
-                        precioAcero += parseFloat(precio.substring(2));
-                    });
+            lineas.forEach((linea) => {
+                const match = linea.match(/C\$(\d+\.\d+)/);
+                if (match) {
+                    const precio = parseFloat(match[1]);
+                    if (linea.includes("Costo de Cemento")) {
+                        costoTotalCemento += precio;
+                    } else if (linea.includes("Costo de Arena")) {
+                        costoTotalArena += precio;
+                    } else if (linea.includes("Costo de Grava")) {
+                        costoTotalGrava += precio;
+                    } else if (linea.includes("Costo de Arenilla")) {
+                        costoTotalArenilla += precio;
+                    } else if (linea.includes("Costo del Acero")) {
+                        costoTotalAcero += precio;
+                    } else if (linea.includes("Costo de Alambre de Amarre")) {
+                        costoTotalAlambre += precio;
+                    }
                 }
-            }
-        });
+            });
 
-        // Calcular los costos totales
-        costoTotalCemento = precioCemento;
-        costoTotalArena = precioArena;
-        costoTotalGrava = precioGrava;
-        costoTotalArenilla = precioArenilla; // Nuevo costo total de Arenilla
-        costoTotalAcero = precioAcero;
-        const costoTotal = precioCemento + precioArena + precioGrava + precioArenilla + precioAcero; // Añadir Arenilla al total
-
-        // Mostrar los resultados
-        alert(`Precio de Cemento: C$${precioCemento.toFixed(2)}\nCosto Total de Cemento: C$${costoTotalCemento.toFixed(2)}\n\nPrecio de Arena: C$${precioArena.toFixed(2)}\nCosto Total de Arena: C$${costoTotalArena.toFixed(2)}\n\nPrecio de Grava: C$${precioGrava.toFixed(2)}\nCosto Total de Grava: C$${costoTotalGrava.toFixed(2)}\n\nPrecio de Arenilla: C$${precioArenilla.toFixed(2)}\nCosto Total de Arenilla: C$${costoTotalArenilla.toFixed(2)}\n\nTotal del Acero: C$${precioAcero.toFixed(2)}\n\nCosto Total: C$${costoTotal.toFixed(2)}`);
+            let costoTotal = costoTotalAcero + costoTotalAlambre + costoTotalArena + costoTotalArenilla + costoTotalCemento + costoTotalGrava;
+            alert(`Costo Total de Cemento: C$${costoTotalCemento.toFixed(2)}\n\nCosto Total de Arena: C$${costoTotalArena.toFixed(2)}\n\nCosto Total de Grava: C$${costoTotalGrava.toFixed(2)}\n\nCosto Total de Arenilla: C$${costoTotalArenilla.toFixed(2)}\n\nCosto Total del Acero: C$${costoTotalAcero.toFixed(2)}\n\nCosto total del Alambre de Amarre: C$${costoTotalAlambre.toFixed(2)}\n\nCosto Total: C$${costoTotal.toFixed(2)}`);
+        }
     }
 
-    
-    function copiarResultados() {
+    function copiarContenido() {
         const resultadoTextarea = document.getElementById('texto');
-        resultadoTextarea.select();
-        document.execCommand('copy');
-        alert("Resultados copiados al portapapeles.");
+        const texto = resultadoTextarea.value.trim();
+
+        if (texto === '') {
+            alert("El cuadro de texto está vacío. Por favor, ingrese los datos de costos de materiales.");
+        } else {
+            resultadoTextarea.select();
+            document.execCommand('copy');
+            alert("Resultados copiados al portapapeles.");
+        }
+    }
+
+    function mostrarResultados() {
+    let costoTotalCemento = 0;
+    let costoTotalArena = 0;
+    let costoTotalGrava = 0;
+    let costoTotalArenilla = 0;
+    let costoTotalAcero = 0;
+    let costoTotalAlambre = 0;
+    let costoTotal =0;
+    
+    const resultadosDiv = document.getElementById('resultados');
+        const botonMostrar = document.getElementById('botonMostrar');
+        const texto = document.getElementById('texto').value.trim();
+
+        if (texto === '') {
+            alert("El cuadro de texto está vacío. Por favor, ingrese los datos de costos de materiales.");
+        } else {
+            const lineas = texto.split('\n');
+
+            lineas.forEach((linea) => {
+                const match = linea.match(/C\$(\d+\.\d+)/);
+                if (match) {
+                    const precio = parseFloat(match[1]);
+                    if (linea.includes("Costo de Cemento")) {
+                        costoTotalCemento += precio;
+                    } else if (linea.includes("Costo de Arena")) {
+                        costoTotalArena += precio;
+                    } else if (linea.includes("Costo de Grava")) {
+                        costoTotalGrava += precio;
+                    } else if (linea.includes("Costo de Arenilla")) {
+                        costoTotalArenilla += precio;
+                    } else if (linea.includes("Costo del Acero")) {
+                        costoTotalAcero += precio;
+                    } else if (linea.includes("Costo de Alambre de Amarre")) {
+                        costoTotalAlambre += precio;
+                    }
+                }
+            });
+
+            let costoTotal = costoTotalAcero + costoTotalAlambre + costoTotalArena + costoTotalArenilla + costoTotalCemento + costoTotalGrava;
+
+            if (resultadosDiv.style.display === 'none' || resultadosDiv.innerHTML === '') {
+                resultadosDiv.innerHTML = `
+                    <p>Costo Total de Cemento: C$${costoTotalCemento.toFixed(2)}</p>
+                    <p>Costo Total de Arena: C$${costoTotalArena.toFixed(2)}</p>
+                    <p>Costo Total de Grava: C$${costoTotalGrava.toFixed(2)}</p>
+                    <p>Costo Total de Arenilla: C$${costoTotalArenilla.toFixed(2)}</p>
+                    <p>Costo Total del Acero: C$${costoTotalAcero.toFixed(2)}</p>
+                    <p>Costo Total del Alambre de Amarre: C$${costoTotalAlambre.toFixed(2)}</p>
+                    <p>Costo Total: C$${costoTotal.toFixed(2)}</p>
+                `;
+                resultadosDiv.style.display = 'block';
+                botonMostrar.textContent = 'Ocultar Resultados';
+            } else {
+                resultadosDiv.innerHTML = '';
+                resultadosDiv.style.display = 'none';
+                botonMostrar.textContent = 'Mostrar Resultados';
+            }
+        }
     }
 </script>
 
