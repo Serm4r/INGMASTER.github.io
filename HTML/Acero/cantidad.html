@@ -75,6 +75,7 @@
         <label for="alto">Alto de Vigas/Columnas (cm):</label>
         <input type="number" id="alto" step="0.1" placeholder="Ingresa el alto" title="Altura en vigas y ancho en columnas">
         <br>
+       
         <label for="ancho">Ancho de Vigas/Columnas (cm):</label>
         <input type="number" id="ancho" step="0.1" placeholder="Ingresa el ancho" title="Ancho en vigas y ancho en columnas">
 
@@ -92,29 +93,29 @@
 
         <label for="diametro">Diámetro de la Varilla principal:</label>
         <select id="diametro">
-            <option value="0.249">1/4 (6.4 mm)</option>
-            <option value="0.560">3/8 (9.52 mm)</option>
-            <option value="0.994">1/2 (12.7 mm)</option>
-            <option value="1.552">5/8 (15.88 mm)</option>
-            <option value="2.235">3/4 (19.05 mm)</option>
-            <option value="3.042">7/8 (22.22 mm)</option>
-            <option value="3.973">1 (25.4 mm)</option>
-            <option value="5.060">1 1/8 (28.65 mm)</option>
-            <option value="6.404">1 1/4 (32.26 mm)</option>
-            <option value="7.907">1 3/8 (35.81 mm)</option>
+            <option value="1/4">1/4 (6.4 mm)</option>
+            <option value="3/8">3/8 (9.52 mm)</option>
+            <option value="1/2">1/2 (12.7 mm)</option>
+            <option value="5/8">5/8 (15.88 mm)</option>
+            <option value="3/4">3/4 (19.05 mm)</option>
+            <option value="7/8">7/8 (22.22 mm)</option>
+            <option value="1">1 (25.4 mm)</option>
+            <option value="1 1/8">1 1/8 (28.65 mm)</option>
+            <option value="1 1/4">1 1/4 (32.26 mm)</option>
+            <option value="1 3/8">1 3/8 (35.81 mm)</option>
         </select>
         <label for="diametro">Diámetro de la Varilla para estribo:</label>
         <select id="diametroEstribo">
-            <option value="0.249">1/4 (6.4 mm)</option>
-            <option value="0.560">3/8 (9.52 mm)</option>
-            <option value="0.994">1/2 (12.7 mm)</option>
-            <option value="1.552">5/8 (15.88 mm)</option>
-            <option value="2.235">3/4 (19.05 mm)</option>
-            <option value="3.042">7/8 (22.22 mm)</option>
-            <option value="3.973">1 (25.4 mm)</option>
-            <option value="5.060">1 1/8 (28.65 mm)</option>
-            <option value="6.404">1 1/4 (32.26 mm)</option>
-            <option value="7.907">1 3/8 (35.81 mm)</option>
+            <option value="1/4">1/4 (6.4 mm)</option>
+            <option value="3/8">3/8 (9.52 mm)</option>
+            <option value="1/2">1/2 (12.7 mm)</option>
+            <option value="5/8">5/8 (15.88 mm)</option>
+            <option value="3/4">3/4 (19.05 mm)</option>
+            <option value="7/8">7/8 (22.22 mm)</option>
+            <option value="1">1 (25.4 mm)</option>
+            <option value="1 1/8">1 1/8 (28.65 mm)</option>
+            <option value="1 1/4">1 1/4 (32.26 mm)</option>
+            <option value="1 3/8">1 3/8 (35.81 mm)</option>
         </select>
         <label for="traslape">Longitud del Traslape (cm):</label>
         <input type="number" id="traslape" step="0.1" placeholder="Ingresa la longitud del traslape">
@@ -124,6 +125,8 @@
         <input type="number" id="distanciaEstribos" step="0.1" placeholder="Ingresa la distancia entre estribos">
         <label for="distanciaAmarre">Distancia de corte alambre de amarre (cm):</label>
         <input type="number" id="distanciaAmarre" step="0.1" placeholder="Ingresa la distancia de amarre">
+        <label for="distanciaAmarre">Precio por libra de alambre de amarre:</label>
+        <input type="number" id="costoAmarre" step="0.1" placeholder="Ingresa costo de alambre de amarre (1lb)">
 
         <br>
         <button onclick="calcular()">Calcular</button>
@@ -134,19 +137,20 @@
     <script>
         function calcular() {
             // Obtener los valores ingresados por el usuario
+           
             const alto = parseFloat(document.getElementById('alto').value) || 0;
             const ancho = parseFloat(document.getElementById('ancho').value) || 0;
             const longitud = parseFloat(document.getElementById('longitud').value) || 0;
             const cantidad = parseInt(document.getElementById('cantidad').value) || 0;
             const elementos = parseInt(document.getElementById('elementos').value) || 0;
             const largoVarilla = parseFloat(document.getElementById('largoVarilla').value) || 0;
-            const diametroVarilla = parseFloat(document.getElementById('diametro').value) || 0;
-            const diametroEstribo = parseFloat(document.getElementById('diametroEstribo').value) || 0;
+            const diametroVarilla = document.getElementById('diametro').value;
+            const diametroEstribo = document.getElementById('diametroEstribo').value;
             const traslape = parseFloat(document.getElementById('traslape').value) || 0;
             const Canttraslape = parseFloat(document.getElementById('Canttraslape').value) || 0;
             const distanciaEstribos = parseFloat(document.getElementById('distanciaEstribos').value) || 0;
             const distanciaAmarre = parseFloat(document.getElementById('distanciaAmarre').value) || 0;
-
+            const costoAmarre = parseFloat(document.getElementById('costoAmarre').value) || 0;
 
             // Calcular la longitud total a cubrir
             const longitudTotal = cantidad * longitud + ((traslape / 100) * Canttraslape);
@@ -158,17 +162,19 @@
             const estriboCubierto = ((ancho + alto) * 2) + 6 ; // -6 es teniendo en cuenta que se deja 1.5cm de recubrimiento por cada lado de la viga o columna y + 12cm de pata, osea 6cm de cada pata de estribo -6+12=+6
             const longitudEstribos = Math.ceil(longitudTotal / distanciaEstribos) * estriboCubierto;
             const cantidadEstribos = Math.ceil( longitudEstribos/largoVarilla);
-
+            
             // Calcular la cantidad de alambre de amarre
-            const cantidadAmarres = elementos * (longitudTotal / distanciaEstribos);
+            const cantidadAmarres = elementos * (longitudTotal / distanciaEstribos) ;
             const metrosAmarreTotal = distanciaAmarre * cantidadAmarres;
             const librasAmarreTotal = Math.ceil(metrosAmarreTotal / 46.73); // calculamos que en una libra hay 46.73 metros de alambre de amarre
-
+            const costoAmarreTotal = librasAmarreTotal* costoAmarre;
             // Mostrar resultados
             const resultadosHTML = `
-                <p>Cantidad de Varillas Principales: ${cantidadVarillas} </p>
-                <p>Cantidad de Varillas para Estribos: ${cantidadEstribos} </p>
+                <p>Cantidad de Varillas Principales  ${diametroVarilla}": ${cantidadVarillas}</p>
+                <p>Cantidad de Varillas para Estribos  ${diametroEstribo}": ${cantidadEstribos}</p>
                 <p>Cantidad de Libras de Alambre de Amarre: ${librasAmarreTotal.toFixed(2)} lb</p>
+                <p>Costo de Alambre de Amarre: C$ ${costoAmarreTotal.toFixed(2)} </p>
+
             `;
 
             document.getElementById('resultados').innerHTML = resultadosHTML;
@@ -213,3 +219,4 @@
 </body>
 
 </html>
+
