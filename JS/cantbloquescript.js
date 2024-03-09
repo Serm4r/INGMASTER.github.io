@@ -60,21 +60,23 @@ function calcularCantidad() {
   let anchoHueco = parseFloat(document.getElementById("anchoHueco").value);
   let largoHueco = parseFloat(document.getElementById("largoHueco").value);
   let cantidadHuecos = parseInt(document.getElementById("cantidadHuecos").value) || 0;
-  const areaRestada = parseFloat(document.getElementById("areaRestada").value) || 0;
+  let areaRestada = parseFloat(document.getElementById("areaRestada").value) || 0;
   let  areaHuecos = cantidadHuecos * (anchoHueco / 100 * largoHueco / 100);
   const volumenBloque = (altoBloque / 100) * (anchoBloque / 100 * largoBloque / 100);
    const areaTriangulo = (1 / 2) * anchoPared * alturaTecho;
-  const areaPared = ((altoPared * anchoPared) + areaTriangulo) - areaRestada;
-  const juntaH = ((espesorJuntaH / 100));
-  const juntaV = ((espesorJuntaV / 100));
-  let cantidad = Math.ceil(areaPared / (((largoBloque / 100) + juntaH) * ((altoBloque / 100) + juntaV)) + 1); // "cantidad" se refiere a la cantidad de bloques
+  let areaPared = ((altoPared * anchoPared) + areaTriangulo) - areaRestada;
+  let juntaH = ((espesorJuntaH / 100));
+  let juntaV = ((espesorJuntaV / 100));
+  //const areajunta= juntaH * juntaV;
+  let areaBloque=  (((largoBloque / 100)+ juntaH) * ((altoBloque / 100) +juntaV)) ;
+  let cantidad = Math.ceil(areaPared / (areaBloque) );
   area = areaPared;
   let volumenmortero = 0;
   const volumenpared = areaPared * ((anchoBloque / 100));
   
   // Aumentar la cantidad de bloques según el desperdicio
-  const desperdicio = Math.ceil(cantidad * (desperdicioPorcentaje / 100));
-  const cantidadBloques = cantidad + desperdicio;
+  const desperdicio = Math.ceil(cantidad * ((desperdicioPorcentaje / 100)));
+  const cantidadBloques = Math.ceil(cantidad + desperdicio + 1);
 
   if (cantidadHuecos > 0) {
     // Si hay huecos
@@ -91,11 +93,11 @@ function calcularCantidad() {
   const proporcionCemento = parseFloat(valores[0]);
   const proporcionArena = parseFloat(valores[1]);
 
-  const volumenCemento = Math.ceil(volumenmortero * (proporcionCemento / 42.5) + 1.5); //tomando en cuenta que las bolsas de cemento son de 42.5kg 
+  const volumenCemento = Math.ceil(volumenmortero * (proporcionCemento / 42.5)); //tomando en cuenta que las bolsas de cemento son de 42.5kg 
   const volumenArena = volumenmortero * proporcionArena ;
   // Calcular el precio del cemento y arena
   const precioCementoTotal = Math.ceil(volumenCemento) * precioCemento; // Redondea hacia arriba
-  const precioArenaTotal =  Math.ceil(volumenArena * precioArena);
+  const precioArenaTotal =  (volumenArena * precioArena);
 
   // Calcular el precio total
   const precioTotal = cantidadBloques * precioBloque + precioCementoTotal + precioArenaTotal;
@@ -104,8 +106,8 @@ const bloquestotales= cantidadBloques*cantidadParedes
 
   document.getElementById("cantidadResultado").textContent = bloquestotales; //cantidad de bloques
   document.getElementById("cantidadCemento").textContent = (volumenCemento) + " bolsas"; // Redondear hacia arriba la cantidad de bolsas de cemento
-  document.getElementById("preciobloque").textContent = "C$ " + precioBloque * cantidadBloques.toFixed(2);
-  document.getElementById("cantidadArena").textContent = volumenArena.toFixed(2) + " metros cúbicos";
+  document.getElementById("preciobloque").textContent = "C$ " + cantidadParedes*precioBloque * cantidadBloques.toFixed(2);
+  document.getElementById("cantidadArena").textContent = volumenArena.toFixed(5) + " metros cúbicos";
   document.getElementById("preciocemento").textContent = "C$" + precioCementoTotal.toFixed(2);
   document.getElementById("precioarena").textContent = "C$" + precioArenaTotal.toFixed(2);
   document.getElementById("precioTotal").textContent = "C$" + precioTotal.toFixed(2);
@@ -141,8 +143,6 @@ context.fill();
   context.font = "20px Arial"; // Estilo del texto
   context.fillText(areaText, x, y);
 }
-
-
 // Llama a la función calcularCantidad() al cargar la página y cada vez que se modifiquen los campos de entrada
 document.addEventListener("DOMContentLoaded", function () {
   calcularCantidad(); // Calcula inicialmente al cargar la página
@@ -215,11 +215,14 @@ function copiarResultados() {
   // Puedes mostrar un mensaje de éxito o realizar otras acciones después de copiar
   alert("Resultados copiados al Portapapeles");
 }
-
 // Agrega un evento clic al botón de copiar
 document
   .getElementById("copiarResultados")
   .addEventListener("click", copiarResultados);
+
+
+
+
 
 
 
