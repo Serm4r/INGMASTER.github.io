@@ -106,7 +106,7 @@ const bloquestotales= cantidadBloques*cantidadParedes
 
   document.getElementById("cantidadResultado").textContent = bloquestotales; //cantidad de bloques
   document.getElementById("cantidadCemento").textContent = (volumenCemento) + " bolsas"; // Redondear hacia arriba la cantidad de bolsas de cemento
-  document.getElementById("preciobloque").textContent = "C$ " + cantidadParedes*precioBloque * cantidadBloques.toFixed(2);
+  document.getElementById("preciobloque").textContent = "C$" + cantidadParedes*precioBloque * cantidadBloques.toFixed(2);
   document.getElementById("cantidadArena").textContent = volumenArena.toFixed(5) + " metros cúbicos";
   document.getElementById("preciocemento").textContent = "C$" + precioCementoTotal.toFixed(2);
   document.getElementById("precioarena").textContent = "C$" + precioArenaTotal.toFixed(2);
